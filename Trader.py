@@ -8,7 +8,7 @@ initial_BR = 355
 cerebro = bt.Cerebro()
 cerebro.broker.setcash(initial_BR)
 
-df = yf.download('FTM-USD', start='2022-01-20', end='2022-01-22')
+df = yf.download('FTM-USD', start='2022-01-20', end='2022-01-21')
 print(df.keys())
 
 feed = bt.feeds.PandasData(dataname=df)
@@ -24,4 +24,4 @@ print("")
 print("Final Portfolio Value %.2f" % cerebro.broker.getvalue())
 print("Final Profit: {}".format(cerebro.broker.getvalue() - initial_BR))
 
-cerebro.plot(style='candlestick')
+#cerebro.plot(style='candlestick')
