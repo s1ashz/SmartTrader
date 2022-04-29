@@ -1,0 +1,16 @@
+# Folders
+vendor/
+.idea/
+reports/
+bin/
+public/
+run.local.sh
+
+# Files
+.DS_Store
+-template
+.scannerwork
+service-click2buy-offers
+after_output.log
+*load-tests-result.txt
+test*.out

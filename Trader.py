@@ -8,7 +8,7 @@ initial_BR = 355
 cerebro = bt.Cerebro()
 cerebro.broker.setcash(initial_BR)
 
-df = yf.download('FTM-USD', start='2022-03-28')
+df = yf.download('FTM-USD', start='2022-01-20', end='2022-01-22')
 print(df.keys())
 
 feed = bt.feeds.PandasData(dataname=df)
