@@ -10,13 +10,13 @@ class DCAStrat(bt.Strategy):
     bot_base_order = None
 
     config_base_order_volume = 10.00
-    config_safety_order_volume = 10.00
-    #config_order_tp = 1.0138
-    config_order_tp = 1.0213
-    config_order_safety_sos = 0.01
-    config_order_step_scale = 1.4
-    config_order_volume_scale = 1.4501
-    config_mstc = 9
+    config_safety_order_volume = 20.00
+    config_order_tp = 1.0138
+    #config_order_tp = 1.0213
+    config_order_safety_sos = 0.02
+    config_order_step_scale = 1
+    config_order_volume_scale = 1.05
+    config_mstc = 30
     total_bot_cost = 0
     total_bot_profit = 0
 
@@ -32,8 +32,8 @@ class DCAStrat(bt.Strategy):
     current_bot_close_price = None
 
     def __init__(self):
-        print("start...")
         self.total_bot_cost = self.calculate_bot_total_cost2()
+        print("start... total bot cost will be: {}".format(self.total_bot_cost))
 
     def calculate_bot_total_profit(self, net_profit):
         profit_vals = []
@@ -291,7 +291,7 @@ class DCAStrat(bt.Strategy):
         print("avg: {}, TP: {}, size: {}".format(self.current_avg_buy, self.current_tp, self.current_size))
         print("=========")
         print("Current Bot Vol: {}".format(self.current_bot_vol))
-        print("Current Bot UPNL: {}".format(self.current_bot_upnl))
+        print("Current Bot UPNL: -{}".format(self.current_bot_upnl))
         print("Total Bot Profit: {}".format(self.total_bot_profit))
         # print(len(self.my_orders))
         # for x in self.my_orders:
