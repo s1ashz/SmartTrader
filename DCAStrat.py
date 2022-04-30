@@ -11,12 +11,14 @@ class DCAStrat(bt.Strategy):
 
     config_base_order_volume = 10.00
     config_safety_order_volume = 10.00
-    #config_order_tp = 1.0513
-    config_order_tp = 1.0138
-    config_order_safety_sos = 0.02
-    config_order_volume_scale = 1.0501
-    config_order_step_scale = 1
-    config_mstc = 30
+    #config_order_tp = 1.0138
+    config_order_tp = 1.0213
+    config_order_safety_sos = 0.01
+    config_order_step_scale = 1.4
+    config_order_volume_scale = 1.4501
+    config_mstc = 9
+    total_bot_cost = 0
+    total_bot_profit = 0
 
     is_bot_active = False
 
@@ -25,11 +27,42 @@ class DCAStrat(bt.Strategy):
     current_tp = None
     current_ss = None
     current_last_SO_price = None
+    current_bot_upnl = None
+    current_bot_vol = None
+    current_bot_close_price = None
+
+    def __init__(self):
+        print("start...")
+        self.total_bot_cost = self.calculate_bot_total_cost2()
+
+    def calculate_bot_total_profit(self, net_profit):
+        profit_vals = []
+        cost = self.config_base_order_volume
+        profit = net_profit - cost
+        possible_profit = profit
+        profit_vals.append(profit)
+        cost += self.config_safety_order_volume
+        vol = self.config_safety_order_volume
+        while possible_profit > 0:
+            possible_profit = net_profit - cost
+            vol *= self.config_order_volume_scale
+            cost += vol
+            profit_vals.append(possible_profit)
+
+        return profit_vals[len(profit_vals) - 2]
+        # return profit if len(profit_vals) == 1 else profit_vals[len(profit_vals) - 2]
+
+    def calculate_bot_total_cost2(self):
+        vol = self.config_safety_order_volume
+        cost = self.config_base_order_volume + self.config_safety_order_volume
+        for i in range(1, self.config_mstc):
+            vol *= self.config_order_volume_scale
+            cost += vol
+            print(i, cost)
+        return cost
 
     # TODO:
-    # neste momento estou a comprar na proxima barra, pois isto só compra na barra seguinte
-    # e estou a fazer set do TP, que bate no high da barra seguinte.csv =
-    # tenho que repensar e saber quando a barra vai fechar
+    # Bot por 1 run parece correcto. Testar para varias trades
 
     def reset_current_status(self):
         self.current_avg_buy = None
@@ -40,6 +73,8 @@ class DCAStrat(bt.Strategy):
         self.my_orders = []
         self.map_bot_safety_orders = {}
         self.bot_base_order = None
+        self.current_bot_upnl = None
+        self.current_bot_vol = None
 
     bar_count = 0
 
@@ -48,32 +83,33 @@ class DCAStrat(bt.Strategy):
         dt = dt or self.datas[0].datetime.date(0)
         print('%s, %s' % (dt.isoformat(), txt))
 
-    def __init__(self):
-        print("start...")
-
     def next(self):
-        try:
-            next_bar = self.data.close[1]
-        except IndexError:
-            return
         self.bar_count += 1
-        # for x in self.map_bot_orders.values():
-        # print(str(x))
-        print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count, self.data.low[0],
-                                                                              self.data.open[0], self.data.close[0],
-                                                                              self.data.high[0]))
+
         if self.bar_count > 1111111:
             return
-        if self.bar_count == 1:
-            self.start_bot(self.data.close[0])
+
+        try:
+            next_bar = self.data.close[1]
+            self.current_bot_close_price = self.data.close[1]
+        except IndexError:
             return
 
-        if not self.is_bot_active:
+        if self.bar_count == 1:
+            print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count, self.data.low[0],
+                                                                                  self.data.open[0], self.data.close[0],
+                                                                                  self.data.high[0]))
             self.start_bot(self.data.close[0])
-            return
+
+        print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count + 1, self.data.low[1],
+                                                                              self.data.open[1], self.data.close[1],
+                                                                              self.data.high[1]))
+
+        # if not self.is_bot_active:
+        #    self.start_bot(self.data.close[0])
+        #    return
 
         self.peak_next_bar(self.data)
-        self.bar_count += 1
 
     def start_bot(self, start_price):
         print(">start bot...")
@@ -82,7 +118,7 @@ class DCAStrat(bt.Strategy):
         self.bot_base_order = self.buy(exectype=bt.Order.StopLimit, size=self.current_size, price=start_price)
         # TODO: FILL BASE ORDER NOW
         # self.fill_bot_orders()
-        self.peak_next_bar(self.data)
+        # self.peak_next_bar(self.data)
 
     def update_bot_orders(self, start_price):
         print(">update_bot_orders: {}".format(start_price))
@@ -125,7 +161,10 @@ class DCAStrat(bt.Strategy):
         self.check_bar_top(data)
 
     def check_bar_bottom(self, data):
-        print(" check bottom: current_tp: {} price: {} low: {}".format(self.current_tp, self.current_last_SO_price, data.low[1]))
+        print(" check bottom: current_tp: {} price: {} low: {} close: {} high: {}".format(self.current_tp,
+                                                                                          self.current_last_SO_price,
+                                                                                          data.low[1], data.close[1],
+                                                                                          data.high[1]))
         for order in self.map_bot_safety_orders.values():
             if (order.order_price >= data.low[1]) and (order.order_status == BotStatus.PENDING):
                 self.fill_bot_safety_order(order)
@@ -141,7 +180,8 @@ class DCAStrat(bt.Strategy):
         print(">check_bar_top {} {}".format(self.current_tp <= data.high[1], self.is_bot_active))
         if self.current_tp <= data.high[1] and self.is_bot_active:
             closing_price = self.close_active_orders(data)
-            #self.scalp_bar_top(data, closing_price)
+            closing_price = self.scalp_bar_top(data, closing_price)
+            self.start_bot(closing_price)
 
     def scalp_bar_top(self, data, closing_price):
         current_tp = closing_price * self.config_order_tp
@@ -149,13 +189,15 @@ class DCAStrat(bt.Strategy):
             size = self.calculate_size(self.config_base_order_volume, closing_price)
             self.buy(exectype=bt.Order.StopLimit, size=size, price=closing_price)
             self.sell(exectype=bt.Order.StopLimit, price=current_tp, size=size)
-            current_tp = current_tp * self.config_order_tp
+            closing_price = current_tp
+            current_tp = closing_price * self.config_order_tp
+        return closing_price
 
     def close_active_orders(self, data):
         closing_price = self.current_tp
         self.sell(exectype=bt.Order.StopLimit, price=self.current_tp, size=self.current_size)
-        print("stopping bot.... current_p: {} high: {} size: {} ".format(self.current_tp, data.high[1], self.current_size))
-        self.is_bot_active = False
+        print("stopping bot.... current_p: {} high: {} size: {} ".format(self.current_tp, data.high[1],
+                                                                         self.current_size))
         print("Size: {}".format(self.current_size))
         self.reset_current_status()
         return closing_price
@@ -203,19 +245,23 @@ class DCAStrat(bt.Strategy):
         self.current_size = order.order_size
         self.current_ss = self.config_order_safety_sos
         self.current_last_SO_price = order.order_price
+        self.current_bot_vol = order.order_price * order.order_size
         print("Current TP: {}".format(self.current_tp))
 
     def recalculate_current_status(self):
         avg_price_numerator = self.bot_base_order.price * self.bot_base_order.size
         avg_price_denominator = self.bot_base_order.size
+        self.current_bot_vol = self.config_base_order_volume
         for order in self.map_bot_safety_orders.values():
             if order.order_status == BotStatus.FILLED:
                 avg_price_numerator += order.order_price * order.order_size
                 avg_price_denominator += order.order_size
+                self.current_bot_vol += order.order_price * order.order_size
 
         self.current_avg_buy = avg_price_numerator / avg_price_denominator
         self.current_tp = self.current_avg_buy * self.config_order_tp
         self.current_size = avg_price_denominator
+        self.current_bot_upnl = self.current_bot_vol - (self.current_size * self.current_bot_close_price)
 
     def notify_order(self, order):
         if order.status in [order.Submitted, order.Accepted]:
@@ -226,8 +272,13 @@ class DCAStrat(bt.Strategy):
                 self.log("BUY EXECUTED ref:{}, price: {} size: {}".format(order.ref, order.executed.price,
                                                                           order.executed.size))
             elif order.issell():
-                self.log("SELL EXECUTED ref:{}, price: {} size: {}".format(order.ref, order.executed.price,
-                                                                           order.executed.size))
+                netProfit = -(order.executed.price * order.executed.size)
+                profit = self.calculate_bot_total_profit(netProfit)
+                self.total_bot_profit += profit
+                self.log(
+                    "SELL EXECUTED ref:{}, price: {} size: {} -----> Profit: {}".format(order.ref, order.executed.price,
+                                                                                        order.executed.size,
+                                                                                        profit))
 
         elif order.status in [order.Canceled]:
             self.log("ORDER CANCELLED")
@@ -237,12 +288,15 @@ class DCAStrat(bt.Strategy):
         print(self.position)
         print(self.position.price)
         print(self.position.size)
-        print("=========")
         print("avg: {}, TP: {}, size: {}".format(self.current_avg_buy, self.current_tp, self.current_size))
+        print("=========")
+        print("Current Bot Vol: {}".format(self.current_bot_vol))
+        print("Current Bot UPNL: {}".format(self.current_bot_upnl))
+        print("Total Bot Profit: {}".format(self.total_bot_profit))
         # print(len(self.my_orders))
-        #for x in self.my_orders:
-            # print("{} - {} - {}".format(str(x.price), x.size, x.Status[x.status]))
-            # print(str(x.Status[x.status]))
+        # for x in self.my_orders:
+        # print("{} - {} - {}".format(str(x.price), x.size, x.Status[x.status]))
+        # print(str(x.Status[x.status]))
         # print(self.orders_executed[1])
 
     # def fill_bot_orders(self):
