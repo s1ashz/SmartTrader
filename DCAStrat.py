@@ -9,14 +9,27 @@ class DCAStrat(bt.Strategy):
     map_bot_safety_orders = {}
     bot_base_order = None
 
-    config_base_order_volume = 10.00
-    config_safety_order_volume = 20.00
-    config_order_tp = 1.0138
     # config_order_tp = 1.0213
-    config_order_safety_sos = 0.02
-    config_order_step_scale = 1
-    config_order_volume_scale = 1.05
-    config_mstc = 30
+    #config_order_tp = 1.0138
+    config_order_tp = 1.0213
+    #config_order_tp = 1.0513
+    #config_order_tp = 1.0613
+    #config_order_tp = 1.0643
+    #config_order_tp = 1.0713
+    #config_order_tp = 1.1013
+    #config_order_tp = 1.1213
+    #config_order_tp = 1.1513
+    #config_order_tp = 1.15613
+    #config_order_tp = 1.1513
+    #config_order_tp = 1.1513
+    #config_order_tp = 1.1513
+
+    config_base_order_volume = 10.00
+    config_safety_order_volume = 10.00
+    config_order_safety_sos = 0.01
+    config_order_step_scale = 1.45
+    config_order_volume_scale = 1.4
+    config_mstc = 9
     total_bot_cost = 0
     total_bot_profit = 0
 
@@ -316,7 +329,12 @@ class DCAStrat(bt.Strategy):
         print("=========")
         print("Current Bot Vol: {}".format(self.current_bot_vol))
         print("Current Bot UPNL: -{}".format(self.current_bot_upnl))
-        print("Total Bot Profit: {}".format(self.total_bot_profit))
+        print("Total bars: {}".format(self.bar_count))
+        print("Total Bot Cost: {:.2f}".format(self.total_bot_cost))
+        print("Total Bot Profit: {:.2f}".format(self.total_bot_profit))
+        print("Total Bot ROI: {:.2f}%".format((self.total_bot_profit / self.total_bot_cost) * 100))
+        print("Daily Bot ROI: {:.2f}%".format(((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100))
+        print("{:.2f}".format(self.total_bot_profit))
         # print(len(self.my_orders))
         # for x in self.my_orders:
         # print("{} - {} - {}".format(str(x.price), x.size, x.Status[x.status]))

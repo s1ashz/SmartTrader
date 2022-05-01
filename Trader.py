@@ -32,7 +32,7 @@ print("")
 plt.rcParams['figure.dpi'] = 100
 plt.rcParams['figure.figsize'] = [20, 12]
 
-cerebro.plot(style='candlestick', height=3000, width=2000, dpi=10000)
+#cerebro.plot(style='candlestick', height=3000, width=2000, dpi=10000)
 
 
 # fig = cerebro.plot(numfigs = num, barupfill = False, bardownfill = False, style = 'candle', plotdist = 0.5,
