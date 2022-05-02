@@ -6,11 +6,11 @@ import yfinance as yf
 
 from DCAStrat import DCAStrat
 
-initial_BR = 10000
+initial_BR = 20000
 cerebro = bt.Cerebro()
 cerebro.broker.setcash(initial_BR)
 
-df = yf.download('FTM-USD', start='2021-10-10')  # , end='2022-04-05')
+df = yf.download('DNT-USD', start='2022-04-11')#, end='2022-05-01')
 print(df.keys())
 
 feed = bt.feeds.PandasData(dataname=df)
