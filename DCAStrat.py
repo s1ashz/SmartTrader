@@ -2,6 +2,7 @@ import backtrader as bt
 
 from BotOrder import BotOrder
 from BotStatus import BotStatus
+from utils import round_decimals_up, round_decimals_down
 
 
 class DCAStrat(bt.Strategy):
@@ -24,6 +25,7 @@ class DCAStrat(bt.Strategy):
     # config_order_tp = 1.1513
     # config_order_tp = 1.1513
     # config_order_tp = 1.1513
+    config_round_decimal = 4
 
     config_base_order_volume = 300.00
     config_safety_order_volume = 30.00
@@ -33,10 +35,12 @@ class DCAStrat(bt.Strategy):
     config_mstc = 100
     total_bot_cost = 0
     total_bot_profit = 0
+    config_is_coin_token = True
 
     is_bot_active = False
     stopped = False
 
+    current_start_price = None
     current_avg_buy = None
     current_size = None
     current_tp = None
@@ -93,6 +97,7 @@ class DCAStrat(bt.Strategy):
         self.bot_base_order = 0
         self.current_bot_upnl = 0
         self.current_bot_vol = 0
+        self.current_start_price = None
 
     bar_count = 0
 
@@ -104,7 +109,7 @@ class DCAStrat(bt.Strategy):
     def next(self):
         self.bar_count += 1
 
-        if self.bar_count > 11111110:
+        if self.bar_count > 1111112:
             return
 
         print("NEW BARR")
@@ -151,26 +156,14 @@ class DCAStrat(bt.Strategy):
         self.reset_current_status()
 
     def start_bot(self, start_price):
-        print(">start bot...")
+        start_price = self.get_rounded_price(start_price)
+        print(">start bot...", start_price)
         self.update_bot_orders(start_price)
         self.is_bot_active = True
         self.bot_base_order = self.buy(exectype=bt.Order.StopLimit, size=self.current_size, price=start_price)
         # TODO: FILL BASE ORDER NOW
         # self.fill_bot_orders()
         # self.peak_next_bar(self.data)
-
-    def create_first_safety_bot_order(self, order):
-        so1_order_ss = self.config_order_safety_sos
-        so1_order_price = order.order_price * (1 - self.config_order_safety_sos)
-        so1_order_vol = self.config_safety_order_volume
-        so1_order_size = self.calculate_size2(so1_order_vol, so1_order_price)
-        print("Creating SO1 -> ord_price: {}, ord_ss: {}, ord_siz:{}, order_vol:{}".format(so1_order_price, so1_order_ss, so1_order_size, so1_order_vol, so1_order_ss))
-        #self.current_ss = self.current_ss * ss
-        return BotOrder(order_price=so1_order_price,
-                        order_ss=so1_order_ss,
-                        order_size=so1_order_size,
-                        order_volume=so1_order_vol,
-                        order_status=BotStatus.PENDING)
 
     def update_bot_orders(self, start_price):
         print(">NEW update_bot_orders: {}".format(start_price))
@@ -266,7 +259,12 @@ class DCAStrat(bt.Strategy):
         return closing_price
 
     def calculate_size(self, order_volume, buy_price):
-        return order_volume / buy_price
+        vol = order_volume / buy_price
+        if self.config_is_coin_token:
+            vol1 = round_decimals_up(vol, 0)
+            #print("calc_size:", vol, vol1)
+            vol = vol1
+        return vol
 
     def calculate_size2(self, order_volume, buy_price):
         shares = (order_volume / buy_price)
@@ -283,28 +281,65 @@ class DCAStrat(bt.Strategy):
         return volume * self.config_order_volume_scale
 
     def create_base_bot_order(self, price):
-        order_volume = self.config_base_order_volume
+        order_volume_iter = self.config_base_order_volume
         order_price = price
-        order_size = self.calculate_size(order_volume, order_price)
+        order_size = self.calculate_size(order_volume_iter, order_price)
+        order_volume = self.get_rounded_volume(order_price * order_size)
+        self.current_start_price = price
         # print("----- base order ------")
         # print("volume: {}, price: {}, size: {} ".format(order_volume, order_price, order_size))
         print("Creating BO  -> ord_price: {}, ord_ss: {}, ord_siz:{}, order_vol:{}".format(order_price, 1, order_size, order_volume))
         return BotOrder(order_price=order_price,
-                        order_ss=1,
+                        order_incremented_ss=0,
+                        order_total_ss=0,
                         order_size=order_size,
                         order_volume=order_volume,
                         order_status=BotStatus.FILLED)
 
+    def create_first_safety_bot_order(self, order):
+        so1_base_ss = self.config_order_safety_sos  # 1.25%
+        so1_incremental_ss = self.config_order_safety_sos
+        so1_total_ss = self.config_order_safety_sos
+
+        #so1_order_ss = self.config_order_safety_sos
+        so1_order_price = self.get_rounded_price(self.current_start_price * (1 - so1_total_ss))
+        so1_order_iter_vol = self.config_safety_order_volume
+        so1_order_size = self.calculate_size(so1_order_iter_vol, so1_order_price)
+        so1_order_vol = self.get_rounded_volume(so1_order_price * so1_order_size)
+        print("Creating SO1 -> ord_price: {}, ord_inc_ss: {}, ord_total_ss: {}, ord_siz:{}, order_vol:{}".format(so1_order_price, so1_incremental_ss, so1_total_ss,
+                                                                                         so1_order_size, so1_order_vol))
+        # self.current_ss = self.current_ss * ss
+        return BotOrder(order_price=so1_order_price,
+                        order_incremented_ss=so1_incremental_ss,
+                        order_total_ss=so1_total_ss,
+                        order_size=so1_order_size,
+                        order_iteration_volume=so1_order_iter_vol,
+                        order_volume=so1_order_vol,
+                        order_status=BotStatus.PENDING)
+
     def create_safety_bot_order(self, order, orderNumber):
-        sox_order_ss = order.order_ss * self.config_order_step_scale
-        sox_order_price = order.order_price * (1 - sox_order_ss)
-        sox_order_vol = order.order_volume * self.config_order_volume_scale
-        sox_order_size = self.calculate_size(sox_order_vol, sox_order_price)
-        print("Creating SO{} -> ord_price: {}, ord_ss: {}, ord_siz:{}, order_vol:{}".format(orderNumber, sox_order_price, sox_order_ss, sox_order_size, sox_order_vol))
+        sox_base_ss = order.order_total_ss
+        sox_incremental_ss = order.order_incremented_ss * self.config_order_step_scale # 1,25 * 0,98 = 0,01225
+        sox_total_ss = sox_base_ss + sox_incremental_ss
+
+        sox_order_price = self.get_rounded_price(self.current_start_price * (1 - sox_total_ss))
+
+        #sox_base_ss = order.order_total_ss
+        #sox_order_ss = sox_base_ss
+
+        #sox_order_ss = order.order_ss * self.config_order_step_scale
+        sox_order_vol_iter = self.get_rounded_volume(order.order_iteration_volume * self.config_order_volume_scale)
+        sox_order_size = self.calculate_size(sox_order_vol_iter, sox_order_price)
+        sox_order_real_vol = self.get_rounded_volume(sox_order_price * sox_order_size)
+        print("Creating SO{} -> ord_price: {}, ord_inc_ss: {}, ord_total_ss: {}, ord_siz:{}, order_vol_iter:{}, order_real_vol:{}".format(orderNumber, sox_order_price, sox_incremental_ss, sox_total_ss,
+                                                                                                                 sox_order_size,  sox_order_vol_iter, sox_order_real_vol))
+
         return BotOrder(order_price=sox_order_price,
-                        order_ss=sox_order_ss,
+                        order_incremented_ss=sox_incremental_ss,
+                        order_total_ss=sox_total_ss,
                         order_size=sox_order_size,
-                        order_volume=sox_order_vol,
+                        order_iteration_volume=sox_order_vol_iter,
+                        order_volume=sox_order_real_vol,
                         order_status=BotStatus.PENDING)
         #order_volume = volume * os
         #order_price = price * (1.00 - (self.current_ss))
@@ -335,6 +370,11 @@ class DCAStrat(bt.Strategy):
  #                                                                                              self.current_last_SO_price))
 
     def recalculate_current_status(self):
+
+        #use my own BorOrder object, that has real total volume, which can be used to calculate
+        #avg buy, which can be used to calculate TP
+
+
         avg_price_numerator = self.bot_base_order.price * self.bot_base_order.size
         avg_price_denominator = self.bot_base_order.size
         self.current_bot_vol = self.config_base_order_volume
@@ -402,3 +442,9 @@ class DCAStrat(bt.Strategy):
     # order_buy = self.buy(exectype=bt.Order.Limit, size=order.order_size, price=order.order_price)
     # self.my_orders.append(order_buy)
     #   order.order_status = BotStatus.ACCEPTED
+
+    def get_rounded_price(self, price):
+        return round_decimals_down(price, self.config_round_decimal)
+
+    def get_rounded_volume(self, vol):
+        return round(vol, self.config_round_decimal)
