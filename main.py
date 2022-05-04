@@ -35,3 +35,15 @@ print(SO1_price, SO1_size)
 print(SO2_price, SO2_size)
 print(SO3_price, SO3_size)
 print(SO4_price, SO4_size)
+
+
+
+my_map = {}
+
+my_map[2] = "xico"
+my_map[4] = "Filipe"
+my_map[1] = "Matheus"
+
+
+print("")
+print(my_map[min(my_map)])

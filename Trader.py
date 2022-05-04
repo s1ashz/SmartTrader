@@ -10,7 +10,7 @@ initial_BR = 20000
 cerebro = bt.Cerebro()
 cerebro.broker.setcash(initial_BR)
 
-df = yf.download('DNT-USD', start='2022-04-11')#, end='2022-05-01')
+df = yf.download('DNT-USD', start='2022-04-10', end='2022-05-02')
 print(df.keys())
 
 feed = bt.feeds.PandasData(dataname=df)
