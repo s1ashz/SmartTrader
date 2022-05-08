@@ -31,14 +31,14 @@ class BotConfig():
                  is_coin_token=True):
         print(config_name)
         self.config_name = config_name
-        self.config_order_tp = order_tp
+        self.config_order_tp = 1 + (order_tp / 100)
         self.config_base_order_volume = base_order_volume
         self.config_safety_order_volume = safety_order_volume
-        self.config_order_safety_sos = order_safety_sos
+        self.config_order_safety_sos = order_safety_sos / 100
         self.config_order_step_scale = order_step_scale
         self.config_order_volume_scale = order_volume_scale
         self.config_mstc = mstc
         self.config_profit_mstc = profit_mstc
-        self.config_risk_value = risk_value
+        self.config_risk_value = risk_value / 100
         self.config_round_decimal = round_decimal
         self.config_is_coin_token = is_coin_token

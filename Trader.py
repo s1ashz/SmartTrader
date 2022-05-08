@@ -7,15 +7,18 @@ import yfinance as yf
 from BotConfig import BotConfig
 from DCAStrat import DCAStrat
 
-taStandardConfig = BotConfig(config_name="asdsda",
-                             order_tp=1.0125,
+taStandardConfig = BotConfig(config_name="Trade alts standard",
+                             order_tp=1.25,
                              base_order_volume=10.00,
                              safety_order_volume=20.00,
-                             order_safety_sos=0.02,
+                             order_safety_sos=2,
                              order_volume_scale=1.05,
                              order_step_scale=1,
                              mstc=30,
-                             profit_mstc=30)
+                             profit_mstc=30,
+                             risk_value=100,
+                             is_coin_token=True,
+                             round_decimal=4)
 
 initial_BR = 20000
 cerebro = bt.Cerebro()
