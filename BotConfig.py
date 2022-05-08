@@ -29,7 +29,6 @@ class BotConfig():
                  risk_value=1,
                  round_decimal=4,
                  is_coin_token=True):
-        print(config_name)
         self.config_name = config_name
         self.config_order_tp = 1 + (order_tp / 100)
         self.config_base_order_volume = base_order_volume

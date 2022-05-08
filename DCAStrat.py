@@ -140,6 +140,16 @@ class DCAStrat(bt.Strategy):
         dt = dt or self.datas[0].datetime.date(0)
         print('%s, %s' % (dt.isoformat(), txt))
 
+    def print_first_bar(self):
+        print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count, self.data.low[0],
+                                                                              self.data.open[0], self.data.close[0],
+                                                                              self.data.high[0]))
+
+    def print_next_bar(self):
+        print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count + 1, self.data.low[1],
+                                                                              self.data.open[1], self.data.close[1],
+                                                                              self.data.high[1]))
+
     def next(self):
         self.bar_count += 1
 
@@ -156,15 +166,10 @@ class DCAStrat(bt.Strategy):
             return
 
         if self.bar_count == 1:
-            print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count, self.data.low[0],
-                                                                                  self.data.open[0], self.data.close[0],
-                                                                                  self.data.high[0]))
-            #self.start_bot(0.1606) # TODO: REVERT THIS. was used for testing
+            self.print_first_bar()
             self.start_bot(self.data.close[0])
 
-        print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count + 1, self.data.low[1],
-                                                                              self.data.open[1], self.data.close[1],
-                                                                              self.data.high[1]))
+        self.print_next_bar()
 
         # if not self.is_bot_active:
         #    self.start_bot(self.data.close[0])
@@ -173,7 +178,7 @@ class DCAStrat(bt.Strategy):
         self.peak_next_bar(self.data)
 
     def graceful_stop_current_trade(self, data):
-        print(">gracefully stopping last trade")
+        # print(">gracefully stopping last trade")
         buy_size = ((self.current_avg_buy * self.current_size) - (self.current_size * data.high[1])) / (
                 data.high[1] - data.low[1])
         order_buy = self.buy(exectype=bt.Order.StopLimit, size=buy_size, price=data.low[1])
