@@ -1,11 +1,16 @@
 import backtrader as bt
 
+from BotConfig import BotConfig
 from BotOrder import BotOrder
 from BotStatus import BotStatus
 from utils import round_decimals_up, round_decimals_down
 
 
 class DCAStrat(bt.Strategy):
+    params = (
+        ('config', None),
+    )
+
     my_orders = []
     bot_last_active_order = {}
     map_bot_safety_orders = {}
@@ -17,7 +22,7 @@ class DCAStrat(bt.Strategy):
     # config_order_tp = 1.02
     # config_order_tp = 1.0038
     # config_order_tp = 1.0125
-    config_order_tp = 1.03
+    # config_order_tp = 1.03
     # config_order_tp = 1.05
     # config_order_tp = 1.06
     # config_order_tp = 1.065
@@ -30,19 +35,20 @@ class DCAStrat(bt.Strategy):
     # config_order_tp = 1.20
     # config_order_tp = 1.25
 
-    config_base_order_volume = 10.00
-    config_safety_order_volume = 10.00
-    config_order_safety_sos = 0.01
-    config_order_step_scale = 1.45
-    config_order_volume_scale = 1.4
-    config_mstc = 9
-    config_profit_mstc = 8      # Must always be lower than config_mstc, otherwise it will just give 0
-    config_risk_value = 1.5
+    config_order_tp = None
+    config_base_order_volume = None
+    config_safety_order_volume = None
+    config_order_safety_sos = None
+    config_order_step_scale = None
+    config_order_volume_scale = None
+    config_mstc = None
+    config_profit_mstc = None
+    config_risk_value = None
+    config_round_decimal = None
+    config_is_coin_token = None
 
-    config_round_decimal = 4
     total_bot_cost = 0
     total_bot_profit = 0
-    config_is_coin_token = True
 
     is_bot_active = False
     stopped = False
@@ -59,6 +65,31 @@ class DCAStrat(bt.Strategy):
     current_SO = 0
 
     def __init__(self):
+        self.config_order_tp = self.params.config.config_order_tp
+        self.config_base_order_volume = self.params.config.config_base_order_volume
+        self.config_safety_order_volume = self.params.config.config_safety_order_volume
+        self.config_order_safety_sos = self.params.config.config_order_safety_sos
+        self.config_order_step_scale = self.params.config.config_order_step_scale
+        self.config_order_volume_scale = self.params.config.config_order_volume_scale
+        self.config_mstc = self.params.config.config_mstc
+        self.config_profit_mstc = self.params.config.config_profit_mstc
+        self.config_risk_value = self.params.config.config_risk_value
+        self.config_round_decimal = self.params.config.config_round_decimal
+        self.config_is_coin_token = self.params.config.config_is_coin_token
+
+        print(self.config_order_tp)
+        print(self.config_base_order_volume)
+        print(self.config_safety_order_volume)
+        print(self.config_order_safety_sos)
+        print(self.config_order_step_scale)
+        print(self.config_order_volume_scale)
+        print(self.config_mstc)
+        print(self.config_profit_mstc)
+        print(self.config_risk_value)
+        print(self.config_round_decimal)
+        print(self.config_is_coin_token)
+
+
         self.total_bot_cost = self.calculate_bot_total_cost()
         print("start... total bot cost will be: {}".format(self.total_bot_cost))
 
@@ -128,8 +159,8 @@ class DCAStrat(bt.Strategy):
             print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count, self.data.low[0],
                                                                                   self.data.open[0], self.data.close[0],
                                                                                   self.data.high[0]))
-            self.start_bot(0.1606) # TODO: REVERT THIS. was used for testing
-            # self.start_bot(self.data.close[0])
+            #self.start_bot(0.1606) # TODO: REVERT THIS. was used for testing
+            self.start_bot(self.data.close[0])
 
         print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count + 1, self.data.low[1],
                                                                               self.data.open[1], self.data.close[1],
@@ -291,12 +322,13 @@ class DCAStrat(bt.Strategy):
         return closing_price
 
     def calculate_size(self, order_volume, buy_price):
-        vol = order_volume / buy_price
+        size = order_volume / buy_price
         if self.config_is_coin_token:
-            vol1 = round_decimals_up(vol, 0)
+            print("order_vol: {}, buy_price: {}, size: {}".format(order_volume, buy_price, size))
+            size1 = round_decimals_up(size, 0)
             #print("calc_size:", vol, vol1)
-            vol = vol1
-        return vol
+            size = size1
+        return size
 
     def calculate_size2(self, order_volume, buy_price):
         shares = (order_volume / buy_price)
