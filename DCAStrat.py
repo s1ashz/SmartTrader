@@ -11,11 +11,13 @@ class DCAStrat(bt.Strategy):
     map_bot_safety_orders = {}
     bot_base_order = None
     bot_number = 0
+    bot_extra_mstc_reached_times = 0
+    bot_risk_reached_times = 0
 
     # config_order_tp = 1.02
     # config_order_tp = 1.0038
-    config_order_tp = 1.0125
-    # config_order_tp = 1.03
+    # config_order_tp = 1.0125
+    config_order_tp = 1.03
     # config_order_tp = 1.05
     # config_order_tp = 1.06
     # config_order_tp = 1.065
@@ -29,13 +31,13 @@ class DCAStrat(bt.Strategy):
     # config_order_tp = 1.25
 
     config_base_order_volume = 10.00
-    config_safety_order_volume = 20.00
-    config_order_safety_sos = 0.02
-    config_order_volume_scale = 1.05
-    config_order_step_scale = 1
-    config_mstc = 30
-
-
+    config_safety_order_volume = 10.00
+    config_order_safety_sos = 0.01
+    config_order_step_scale = 1.45
+    config_order_volume_scale = 1.4
+    config_mstc = 8
+    config_profit_mstc = 5      # Must always be higher than config_mstc, otherwise it will just give 0
+    config_risk_value = 1.5
 
     config_round_decimal = 4
     total_bot_cost = 0
@@ -57,43 +59,26 @@ class DCAStrat(bt.Strategy):
     current_SO = 0
 
     def __init__(self):
-        #self.total_bot_cost = self.calculate_bot_total_cost()
+        self.total_bot_cost = self.calculate_bot_total_cost()
         print("start... total bot cost will be: {}".format(self.total_bot_cost))
 
-    def calculate_bot_total_profit2(self, net_profit, avg_price, size):
+    def calculate_bot_total_profit(self, net_profit, avg_price, size):
         if self.stopped:
             return 0
         total_vol = avg_price * -size
         # print("NEW CALCULATE PROFIT MWAHAHA", total_vol,  net_profit, avg_price, size)
         return net_profit - total_vol
 
-    def calculate_bot_total_profit(self, net_profit):
-        # print(net_profit)
-        if self.stopped:
-            return 0
-        profit_vals = []
-        cost = self.config_base_order_volume
-        profit = net_profit - cost
-        possible_profit = profit
-        profit_vals.append(profit)
-        cost += self.config_safety_order_volume
-        vol = self.config_safety_order_volume
-        while possible_profit > 0:
-            possible_profit = net_profit - cost
-            vol *= self.config_order_volume_scale
-            cost += vol
-            profit_vals.append(possible_profit)
-
-        return profit_vals[len(profit_vals) - 2]
-        # return profit if len(profit_vals) == 1 else profit_vals[len(profit_vals) - 2]
-
     def calculate_bot_total_cost(self):
         vol = self.config_safety_order_volume
         cost = self.config_base_order_volume + self.config_safety_order_volume
-        for i in range(1, self.config_mstc):
+        for i in range(1, self.config_profit_mstc):
             vol *= self.config_order_volume_scale
             cost += vol
-        return cost
+
+        real_risked_cost = cost / self.config_risk_value
+
+        return real_risked_cost
 
     # TODO:
     # Bot por 1 run parece correcto. Testar para varias trades
@@ -126,7 +111,6 @@ class DCAStrat(bt.Strategy):
         if self.bar_count > 1111112:
             return
 
-        print("NEW BARR")
         try:
             next_bar = self.data.close[2]
             self.current_bot_close_price = self.data.close[2]
@@ -140,8 +124,8 @@ class DCAStrat(bt.Strategy):
             print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count, self.data.low[0],
                                                                                   self.data.open[0], self.data.close[0],
                                                                                   self.data.high[0]))
-            #self.start_bot(0.1623) # TODO: REVERT THIS. was used for testing
-            self.start_bot(self.data.close[0])
+            self.start_bot(0.1606) # TODO: REVERT THIS. was used for testing
+            # self.start_bot(self.data.close[0])
 
         print("\t>>>Next Bar {}:low {}, open: {}, close: {}, high {} ".format(self.bar_count + 1, self.data.low[1],
                                                                               self.data.open[1], self.data.close[1],
@@ -213,7 +197,7 @@ class DCAStrat(bt.Strategy):
     # print(str(x))
 
     def peak_next_bar(self, data):
-        print(">peaking")
+        # print(">peaking")
         if self.is_bot_active:
             if data.close[1] < data.open[1]:
                 self.process_red_candle(data)
@@ -224,23 +208,22 @@ class DCAStrat(bt.Strategy):
             # self.check_bar_top(data)
 
     def process_red_candle(self, data):
-        print(">red candle")
+        # print(">red candle")
         self.check_bar_top(data)
         self.check_bar_bottom(data)
         self.fill_bar_from_bottom_to_close(data)
 
     def process_green_candle(self, data):
-        print(">green candle")
+        # print(">green candle")
         self.check_bar_bottom(data)
         self.check_bar_top(data)
         self.fill_bar_from_top_to_close(data)
 
     def check_bar_bottom(self, data):
-        print(" check bottom: current_tp: {} price: {} low: {} close: {} high: {}".format(self.current_tp,
-                                                                                          self.current_last_SO_price,
-                                                                                          data.low[1], data.close[1],
-                                                                                          data.high[1]))
-
+        #print(" check bottom: current_tp: {} price: {} low: {} close: {} high: {}".format(self.current_tp,
+        #                                                                                  self.current_last_SO_price,
+        #                                                                                  data.low[1], data.close[1],
+        #                                                                                  data.high[1]))
         for order in self.map_bot_safety_orders.values():
             if (order.order_price > data.low[1]) and (order.order_status == BotStatus.PENDING):
                 self.fill_bot_safety_order(order)
@@ -254,11 +237,11 @@ class DCAStrat(bt.Strategy):
         self.recalculate_current_status()
 
     def check_bar_top(self, data):
-        print(">check_bar_top {} {}".format(self.current_tp <= data.high[1], self.is_bot_active))
+        # print(">check_bar_top {} {}".format(self.current_tp <= data.high[1], self.is_bot_active))
         if self.current_tp <= data.high[1] and self.is_bot_active:
             closing_price = self.close_active_orders(data.high[1])
             closing_price = self.scalp_bar(data, closing_price, "top")
-            self.start_bot(closing_price)
+            self.start_bot(0.1606)
             # TODO: GO DOWN ON THIS BAR AND FILL UNTILL CLOSE
             #self.fill_bar_from_top_to_close(data)
 
@@ -372,6 +355,7 @@ class DCAStrat(bt.Strategy):
                         order_status=BotStatus.PENDING)
 
     def create_safety_bot_order(self, order, orderNumber):
+        isExtraOrder = self.check_if_extra_mstc_order(orderNumber)
         sox_base_ss = order.order_total_ss
         sox_incremental_ss = order.order_incremented_ss * self.config_order_step_scale # 1,25 * 0,98 = 0,01225
         sox_total_ss = sox_base_ss + sox_incremental_ss
@@ -387,8 +371,8 @@ class DCAStrat(bt.Strategy):
         sox_order_real_vol = self.get_rounded_volume(sox_order_price * sox_order_size)
         sox_cumulative_volume = order.order_volume + sox_order_real_vol
         sox_cumulative_size = order.order_cumulative_size + sox_order_size
-        print("Creating SO{} -> ord_price: {}, ord_inc_ss: {}, ord_total_ss: {}, ord_siz:{}, ord_cum_siz:{}, order_vol_iter:{}, order_real_vol:{}".format(orderNumber, sox_order_price, sox_incremental_ss, sox_total_ss,
-                                                                                                                 sox_order_size, sox_cumulative_size, sox_order_vol_iter, sox_order_real_vol))
+        print("Creating SO{} -> ord_price: {}, ord_inc_ss: {}, ord_total_ss: {}, ord_siz:{}, ord_cum_siz:{}, order_vol_iter:{}, order_real_vol:{}, exra order? {}".format(orderNumber, sox_order_price, sox_incremental_ss, sox_total_ss,
+                                                                                                                 sox_order_size, sox_cumulative_size, sox_order_vol_iter, sox_order_real_vol, isExtraOrder))
 
         return BotOrder(order_price=sox_order_price,
                         order_incremented_ss=sox_incremental_ss,
@@ -398,7 +382,8 @@ class DCAStrat(bt.Strategy):
                         order_volume=sox_order_real_vol,
                         order_cumulative_volume=sox_cumulative_volume,
                         order_cumulative_size=sox_cumulative_size,
-                        order_status=BotStatus.PENDING)
+                        order_status=BotStatus.PENDING,
+                        order_is_extra_mstc=isExtraOrder)
         #order_volume = volume * os
         #order_price = price * (1.00 - (self.current_ss))
         #order_size = self.calculate_size(order_volume, order_price)
@@ -471,7 +456,9 @@ class DCAStrat(bt.Strategy):
                 # TODO: Careful, in scalp this "last_order" object only has only avg price
                 last_order = self.bot_last_active_order[bot_numb]
                 netProfit = -(order.executed.price * order.executed.size)
-                profit = self.calculate_bot_total_profit2(net_profit=netProfit, avg_price=last_order.order_avg_price, size=order.executed.size)
+                profit = self.calculate_bot_total_profit(net_profit=netProfit, avg_price=last_order.order_avg_price, size=order.executed.size)
+                if last_order.order_is_extra_mstc:
+                    self.bot_extra_mstc_reached_times += 1
                 #profit = self.calculate_bot_total_profit(netProfit)
                 self.total_bot_profit += profit
                 self.current_SO = 0
@@ -499,10 +486,12 @@ class DCAStrat(bt.Strategy):
         print("Current Bot Vol: {}".format(self.current_bot_vol))
         print("Current Bot UPNL: -{}".format(self.current_bot_upnl))
         print("Total bars: {}".format(self.bar_count))
+        print("Bot Risk: {}%".format(self.config_risk_value * 100))
+        print("Bot extra mstc reached times: {}".format(self.bot_extra_mstc_reached_times))
         print("Total Bot Cost: {:.2f}".format(self.total_bot_cost))
+        print("Total Bot ROI: {:.2f}%".format((self.total_bot_profit / self.total_bot_cost) * 100))
+        print("Daily Bot ROI: {:.2f}%".format(((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100))
         print("Total Bot Profit: {:.2f}".format(self.total_bot_profit))
-        # print("Total Bot ROI: {:.2f}%".format((self.total_bot_profit / self.total_bot_cost) * 100))
-        # print("Daily Bot ROI: {:.2f}%".format(((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100))
         print("{:.2f}".format(self.total_bot_profit))
         # print(len(self.my_orders))
         # for x in self.my_orders:
@@ -521,3 +510,9 @@ class DCAStrat(bt.Strategy):
 
     def get_rounded_volume(self, vol):
         return round(vol, self.config_round_decimal)
+
+    def check_if_extra_mstc_order(self, orderNumber):
+        isExtraOrder = False
+        if orderNumber > self.config_profit_mstc:
+            isExtraOrder = True
+        return isExtraOrder
