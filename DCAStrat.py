@@ -12,7 +12,7 @@ class DCAStrat(bt.Strategy):
     bot_base_order = None
     bot_number = 0
     bot_extra_mstc_reached_times = 0
-    bot_risk_reached_times = 0
+    bot_risk_surpassed_times = 0
 
     # config_order_tp = 1.02
     # config_order_tp = 1.0038
@@ -35,8 +35,8 @@ class DCAStrat(bt.Strategy):
     config_order_safety_sos = 0.01
     config_order_step_scale = 1.45
     config_order_volume_scale = 1.4
-    config_mstc = 8
-    config_profit_mstc = 5      # Must always be higher than config_mstc, otherwise it will just give 0
+    config_mstc = 9
+    config_profit_mstc = 8      # Must always be lower than config_mstc, otherwise it will just give 0
     config_risk_value = 1.5
 
     config_round_decimal = 4
@@ -66,6 +66,10 @@ class DCAStrat(bt.Strategy):
         if self.stopped:
             return 0
         total_vol = avg_price * -size
+        affordable_bot_cost = self.total_bot_cost
+        if total_vol > affordable_bot_cost:
+            self.bot_risk_surpassed_times += 1
+
         # print("NEW CALCULATE PROFIT MWAHAHA", total_vol,  net_profit, avg_price, size)
         return net_profit - total_vol
 
@@ -487,7 +491,8 @@ class DCAStrat(bt.Strategy):
         print("Current Bot UPNL: -{}".format(self.current_bot_upnl))
         print("Total bars: {}".format(self.bar_count))
         print("Bot Risk: {}%".format(self.config_risk_value * 100))
-        print("Bot extra mstc reached times: {}".format(self.bot_extra_mstc_reached_times))
+        print("Number of times Bot volume surpassed risk volume: {}".format(self.bot_risk_surpassed_times))
+        print("Number of times Bot reached extra mstc: {}".format(self.bot_extra_mstc_reached_times))
         print("Total Bot Cost: {:.2f}".format(self.total_bot_cost))
         print("Total Bot ROI: {:.2f}%".format((self.total_bot_profit / self.total_bot_cost) * 100))
         print("Daily Bot ROI: {:.2f}%".format(((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100))
