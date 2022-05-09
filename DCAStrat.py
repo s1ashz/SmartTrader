@@ -560,7 +560,7 @@ class DCAStrat(bt.Strategy):
         tp = (self.config_order_tp - 1) * 100
         daily_roi = ((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100
         total_roi = (self.total_bot_profit / self.total_bot_cost) * 100
-        str = "TP:{:5.2f}%, Profit:{:6.2f}, Daily ROI:{:4.2f}, ROI:{:5.2f}, Bot Cost:{:6.2f}, Risk:{}, Nº>risk:{}, Nº>mstc:{}"
+        str = "TP:{:6.2f}%, Profit:{:7.2f}, Daily ROI:{:4.2f}, ROI:{:5.2f}, Bot Cost:{:6.2f}, Risk:{}, Nº>risk:{}, Nº>mstc:{}"
         print(str.format(tp,
                          self.total_bot_profit,
                          daily_roi,
