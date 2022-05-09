@@ -6,7 +6,6 @@ from BotConfig import BotConfig
 from DCAStrat import DCAStrat
 
 bn = "bot_name"
-tp = "tp"
 bo = "bo"
 so = "so"
 sos = "sos"
@@ -28,55 +27,56 @@ override_end_date = '2022-05-01'
 test_bots = []
 test_coins = []
 
-take_profits = [1, 1.25, 2, 3, 4, 5, 10, 15, 20]
+take_profits = [1, 1.25, 2, 3]#, 3, 4, 5, 10, 15, 20]
 
-btc_coin   = {cn: "BTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-eth_coin   = {cn: "ETH-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-ada_coin   = {cn: "ADA-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-sol_coin   = {cn: "SOL-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-matic_coin = {cn: "MATIC-USD",  start_date: '2022-01-01', end_date: '2022-05-01'}
-lrc_coin   = {cn: "LRC-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-ftm_coin   = {cn: "FTM-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-near_coin  = {cn: "NEAR-USD",   start_date: '2022-01-01', end_date: '2022-05-01'}
-celo_coin  = {cn: "CELO-USD",   start_date: '2022-01-01', end_date: '2022-05-01'}
-one_coin   = {cn: "ONE-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-mana_coin  = {cn: "MANA-USD",   start_date: '2022-01-01', end_date: '2022-05-01'}
-fet_coin   = {cn: "FET-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-ankr_coin  = {cn: "ANKR-USD",   start_date: '2022-01-01', end_date: '2022-05-01'}
-shib_coin  = {cn: "SHIB-USD",   start_date: '2022-01-01', end_date: '2022-05-01'}
-ctsi_coin  = {cn: "CTSI-USD",   start_date: '2022-01-01', end_date: '2022-05-01'}
-enj_coin   = {cn: "ENJ-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-hnt_coin   = {cn: "HNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
-axs_coin   = {cn: "AXS-USD",    start_date: '2022-01-01', end_date: '2022-05-01'}
+btc_coin   = {cn: "BTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+eth_coin   = {cn: "ETH-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+ada_coin   = {cn: "ADA-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+sol_coin   = {cn: "SOL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+matic_coin = {cn: "MATIC-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_token: True}
+lrc_coin   = {cn: "LRC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+ftm_coin   = {cn: "FTM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: True}
+near_coin  = {cn: "NEAR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_token: True}
+celo_coin  = {cn: "CELO-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+one_coin   = {cn: "ONE-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+mana_coin  = {cn: "MANA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_token: True}
+fet_coin   = {cn: "FET-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: True}
+ankr_coin  = {cn: "ANKR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+shib_coin  = {cn: "SHIB-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_token: True}
+ctsi_coin  = {cn: "CTSI-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_token: True}
+enj_coin   = {cn: "ENJ-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+hnt_coin   = {cn: "HNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
+axs_coin   = {cn: "AXS-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
 
 
-ta_bot           = {bn: "Trade alts standard", bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, is_token: True, dec_p: 4}
-mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4, ss: 1.3,   mstc: 8,  p_mstc: 9,  risk: 100, is_token: True, dec_p: 4}
-oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 8,  p_mstc: 9,  risk: 100, is_token: True, dec_p: 4}
-phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10, p_mstc: 10, risk: 100, is_token: True, dec_p: 4}
-phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11, p_mstc: 11, risk: 100, is_token: True, dec_p: 4}
+ta_bot           = {bn: "Trade alts standard", bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
+mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4, ss: 1.3,   mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
+oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
+phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10, p_mstc: 10, risk: 100, dec_p: 4}
+phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11, p_mstc: 11, risk: 100, dec_p: 4}
 
 
 
 def set_test_coins():
     test_coins.append(btc_coin)
-    #test_coins.append(eth_coin)
-    #test_coins.append(ada_coin)
-    #test_coins.append(sol_coin)
-    #test_coins.append(matic_coin)
-    #test_coins.append(lrc_coin)
-    #test_coins.append(ftm_coin)
-    #test_coins.append(near_coin)
-    #test_coins.append(celo_coin)
-    #test_coins.append(one_coin)
-    #test_coins.append(mana_coin)
-    #test_coins.append(fet_coin)
-    #test_coins.append(ankr_coin)
+    test_coins.append(eth_coin)
+    test_coins.append(ada_coin)
+    test_coins.append(sol_coin)
+    test_coins.append(matic_coin)
+    test_coins.append(lrc_coin)
+    test_coins.append(ftm_coin)
+    test_coins.append(near_coin)
+    test_coins.append(celo_coin)
+    test_coins.append(one_coin)
+    test_coins.append(mana_coin)
+    test_coins.append(fet_coin)
+    test_coins.append(ankr_coin)
     #test_coins.append(shib_coin)
-    #test_coins.append(ctsi_coin)
-    #test_coins.append(enj_coin)
-    #test_coins.append(hnt_coin)
-    #test_coins.append(axs_coin)
+    test_coins.append(ctsi_coin)
+    test_coins.append(enj_coin)
+    test_coins.append(hnt_coin)
+    test_coins.append(axs_coin)
+
 
 def set_test_bots():
     test_bots.append(ta_bot)
@@ -91,8 +91,9 @@ def run_test_bots():
         df = get_data_from_api(coin)
         for bot in test_bots:
             print("\n=========================  {}  ===============================".format(bot[bn]))
-            for tp in take_profits:
-                bot_config = create_config(bot, tp)
+            for take_profit in take_profits:
+                bot_config = create_config(bot, coin, take_profit)
+                #print("Running Coin: {} bot {} with tp {} from {} to {} \n".format(coin, bot_config, take_profit, coin[start_date],coin[end_date]))
                 run_dca_bot(config=bot_config, dfData=df)
 
 def get_data_from_api(coin):
@@ -106,9 +107,9 @@ def get_data_from_api(coin):
     print("\n******************************************************  {} : {} - {} ******************************************************".format(coin[cn], sd, ed))
     return yf.download(coin[cn], start=sd, end=ed)
 
-def create_config(bot, tp):
+def create_config(bot, coin, take_profit):
     return BotConfig(config_name=bot[bn],
-                     order_tp=tp,
+                     order_tp=take_profit,
                      base_order_volume=bot[bo],
                      safety_order_volume=bot[so],
                      order_safety_sos=bot[sos],
@@ -118,7 +119,7 @@ def create_config(bot, tp):
                      profit_mstc=bot[p_mstc],
                      risk_value=bot[risk],
                      round_decimal=bot[dec_p],
-                     is_coin_token=bot[is_token],
+                     is_coin_token=coin[is_token],
                      is_multi_bot=True)
 
 
