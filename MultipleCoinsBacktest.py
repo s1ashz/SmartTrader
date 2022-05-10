@@ -27,7 +27,7 @@ override_end_date = '2022-05-01'
 test_bots = []
 test_coins = []
 
-take_profits = [1, 1.25, 2, 3]#, 3, 4, 5, 10, 15, 20]
+take_profits = [1, 1.25, 2, 3, 4, 5, 10, 15, 20, 30, 50, 100]
 
 btc_coin   = {cn: "BTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
 eth_coin   = {cn: "ETH-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}

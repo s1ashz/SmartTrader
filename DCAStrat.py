@@ -66,7 +66,7 @@ class DCAStrat(bt.Strategy):
     current_SO = 0
 
     def __init__(self):
-        self.reset_current_status()
+        self.clean_all_bot_status()
         self.config_order_tp = self.params.config.config_order_tp
         self.config_base_order_volume = self.params.config.config_base_order_volume
         self.config_safety_order_volume = self.params.config.config_safety_order_volume
@@ -107,6 +107,30 @@ class DCAStrat(bt.Strategy):
 
     # TODO:
     # Bot por 1 run parece correcto. Testar para varias trades
+
+    def clean_all_bot_status(self):
+        self.my_orders = []
+        self.bot_last_active_order = {}
+        self.map_bot_safety_orders = {}
+        self.bot_base_order = None
+        self.bot_number = 0
+        self.bot_extra_mstc_reached_times = 0
+        self.bot_risk_surpassed_times = 0
+        self.current_start_price = None
+        self.current_avg_buy = None
+        self.current_size = None
+        self.current_tp = None
+        self.current_ss = None
+        self.current_last_SO_price = None
+        self.current_bot_upnl = None
+        self.current_bot_vol = None
+        self.current_bot_close_price = None
+        self.current_SO = 0
+        self.total_bot_cost = 0
+        self.total_bot_profit = 0
+        self.is_bot_active = False
+        self.stopped = False
+
 
     def reset_current_status(self):
         self.current_avg_buy = 0
@@ -562,7 +586,7 @@ class DCAStrat(bt.Strategy):
         tp = (self.config_order_tp - 1) * 100
         daily_roi = ((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100
         total_roi = (self.total_bot_profit / self.total_bot_cost) * 100
-        str = "TP:{:6.2f}%, Profit:{:7.2f}, Daily ROI:{:4.2f}, ROI:{:5.2f}, Bot Cost:{:6.2f}, Risk:{}, Nº>risk:{}, Nº>mstc:{}, bot_numb:{}"
+        str = "TP:{:6.2f}%, Profit:{:7.2f}, Daily ROI:{:4.2f}, ROI:{:5.2f}, Bot Cost:{:6.2f}, Risk:{}, Nº>risk:{}, Nº>mstc:{}, bot_numb:{:3}"
         print(str.format(tp,
                          self.total_bot_profit,
                          daily_roi,
