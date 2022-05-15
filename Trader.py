@@ -13,7 +13,7 @@ from DCAStrat import DCAStrat
 
 # bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
 
-taStandardConfig = BotConfig(config_name="Trade alts standard",
+taStandardConfig = BotConfig(config_bot_name="Trade alts standard",
                              order_tp=10,
                              base_order_volume=10.00,
                              safety_order_volume=10.00,

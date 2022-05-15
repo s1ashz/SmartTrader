@@ -1,7 +1,9 @@
 import backtrader as bt
 
 from BotConfig import BotConfig
+from BotProfitHistory import BotProfitHistory
 from BotOrder import BotOrder
+from BotProfit import BotProfit
 from BotStatus import BotStatus
 from utils import round_decimals_up, round_decimals_down
 
@@ -9,6 +11,7 @@ from utils import round_decimals_up, round_decimals_down
 class DCAStrat(bt.Strategy):
     params = (
         ('config', None),
+        ('bot_history', None),
     )
 
     my_orders = []
@@ -35,6 +38,7 @@ class DCAStrat(bt.Strategy):
     # config_order_tp = 1.20
     # config_order_tp = 1.25
 
+    config_coin_name = None
     config_order_tp = None
     config_base_order_volume = None
     config_safety_order_volume = None
@@ -67,6 +71,8 @@ class DCAStrat(bt.Strategy):
 
     def __init__(self):
         self.clean_all_bot_status()
+        self.config_bot_name = self.params.config.config_bot_name
+        self.config_coin_name = self.params.config.config_coin_name
         self.config_order_tp = self.params.config.config_order_tp
         self.config_base_order_volume = self.params.config.config_base_order_volume
         self.config_safety_order_volume = self.params.config.config_safety_order_volume
@@ -79,7 +85,7 @@ class DCAStrat(bt.Strategy):
         self.config_round_decimal = self.params.config.config_round_decimal
         self.config_is_coin_token = self.params.config.config_is_coin_token
         self.config_is_multi_bot = self.params.config.config_is_multi_bot
-
+        self.bot_profit_history = self.params.bot_history
         self.total_bot_cost = self.calculate_bot_total_cost()
         # print("start... total bot cost will be: {}".format(self.total_bot_cost))
 
@@ -128,9 +134,9 @@ class DCAStrat(bt.Strategy):
         self.current_SO = 0
         self.total_bot_cost = 0
         self.total_bot_profit = 0
+        #self.current_bot_profit = None
         self.is_bot_active = False
         self.stopped = False
-
 
     def reset_current_status(self):
         self.current_avg_buy = 0
@@ -180,10 +186,10 @@ class DCAStrat(bt.Strategy):
             return
 
         if self.bar_count == 1:
-            #self.print_first_bar()
+            # self.print_first_bar()
             self.start_bot(self.data.close[0])
 
-        #self.print_next_bar()
+        # self.print_next_bar()
 
         # if not self.is_bot_active:
         #    self.start_bot(self.data.close[0])
@@ -210,7 +216,7 @@ class DCAStrat(bt.Strategy):
     def start_bot(self, start_price):
         self.bot_number += 1
         start_price = self.get_rounded_price(start_price)
-        #print(">starting bot_num: {} with price {}".format(self.bot_number, start_price))
+        # print(">starting bot_num: {} with price {}".format(self.bot_number, start_price))
         self.update_bot_orders(start_price)
         self.is_bot_active = True
         self.buy(exectype=bt.Order.StopLimit, size=self.current_size, price=start_price)
@@ -492,7 +498,7 @@ class DCAStrat(bt.Strategy):
         self.current_bot_upnl = self.current_bot_vol - (self.current_size * self.current_bot_close_price)
         last_active_order.order_avg_price = self.current_avg_buy
         self.bot_last_active_order[self.bot_number] = last_active_order
-        #print( "Recalculate: SO: {}, BN: {}, Buy Price {} Avg Buy: {}, TP: {}, cu_size: {}, cu_ss: {},last_SO_price: {}"
+        # print( "Recalculate: SO: {}, BN: {}, Buy Price {} Avg Buy: {}, TP: {}, cu_size: {}, cu_ss: {},last_SO_price: {}"
         #       .format( order_number, self.bot_number, last_active_order.order_price,
         #            self.current_avg_buy, self.current_tp, self.current_size, self.current_ss, self.current_last_SO_price))
 
@@ -502,7 +508,7 @@ class DCAStrat(bt.Strategy):
 
         if order.status in [order.Completed]:
             if order.isbuy():
-                #self.log("BUY EXECUTED ref:{}, price: {} size: {}".format(order.ref, order.executed.price,
+                # self.log("BUY EXECUTED ref:{}, price: {} size: {}".format(order.ref, order.executed.price,
                 #                                                          order.executed.size))
                 self.current_SO += 1
             elif order.issell():
@@ -523,7 +529,7 @@ class DCAStrat(bt.Strategy):
                     map_print += "Inside obj: {} {} \t".format(k, v.order_avg_price)
                 del self.bot_last_active_order[min(self.bot_last_active_order)]
                 # print("Deleting bot order numb: {} -> last active orders ".format(bot_numb), self.bot_last_active_order)
-                #self.log(
+                # self.log(
                 #   "SELL EXECUTED bot_numb: {}, ref:{}, price: {} size: {} -----> Profit: {}\t Deleting bot order numb: {} -> last active orders {}".format(
                 #       bot_numb, order.ref, order.executed.price,
                 #       order.executed.size,
@@ -587,16 +593,33 @@ class DCAStrat(bt.Strategy):
         daily_roi = ((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100
         total_roi = (self.total_bot_profit / self.total_bot_cost) * 100
         str = "TP:{:6.2f}%, Profit:{:7.2f}, Daily ROI:{:4.2f}, ROI:{:5.2f}, Bot Cost:{:6.2f}, Risk:{}, Nº>risk:{}, Nº>mstc:{}, bot_numb:{:3}"
-        print(str.format(tp,
-                         self.total_bot_profit,
-                         daily_roi,
-                         total_roi,
-                         self.total_bot_cost,
-                         self.config_risk_value * 100,
-                         self.bot_risk_surpassed_times,
-                         self.bot_extra_mstc_reached_times,
-                         self.bot_number,
-                         ))
+        risk_value = self.config_risk_value * 100
+        #print(str.format(tp,
+        #                 self.total_bot_profit,
+        #                 daily_roi,
+        #                 total_roi,
+        #                 self.total_bot_cost,
+        #                 risk_value,
+        #                 self.bot_risk_surpassed_times,
+        #                 self.bot_extra_mstc_reached_times,
+        #                 self.bot_number,
+        #                 ))
+
+        prof = BotProfit(
+            coin=self.config_coin_name,
+            bot_name=self.config_bot_name,
+            total_bot_profit=self.total_bot_profit,
+            daily_roi=daily_roi,
+            total_roi=total_roi,
+            total_bot_cost=self.total_bot_cost,
+            config_risk_value=risk_value,
+            bot_risk_surpassed_times=self.bot_risk_surpassed_times,
+            bot_extra_mstc_reached_times=self.bot_extra_mstc_reached_times,
+            bar_count=self.bar_count,
+            bot_number=self.bot_number,
+            bot_config=self.params.config
+        )
+        self.bot_profit_history.add_profit(prof)
         # print("Bot Risk: {}%".format(self.config_risk_value * 100))
         # print("Number of times Bot volume surpassed risk volume: {}".format(self.bot_risk_surpassed_times))
         # print("Number of times Bot reached extra mstc: {}".format(self.bot_extra_mstc_reached_times))
@@ -605,3 +628,7 @@ class DCAStrat(bt.Strategy):
         # print("Daily Bot ROI: {:.2f}%".format(((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100))
         # print("Total Bot Profit: {:.2f}".format(self.total_bot_profit))
         # print("")
+
+    def staticMethodTest(self, profit):
+        return profit
+

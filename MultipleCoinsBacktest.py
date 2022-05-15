@@ -3,6 +3,7 @@ import yfinance as yf
 
 import BotConfig
 from BotConfig import BotConfig
+from BotProfitHistory import BotProfitHistory
 from DCAStrat import DCAStrat
 
 bn = "bot_name"
@@ -49,7 +50,7 @@ hnt_coin   = {cn: "HNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01'
 axs_coin   = {cn: "AXS-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_token: False}
 
 
-ta_bot           = {bn: "Trade alts standard", bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
+ta_bot           = {bn: "TA standard", bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
 mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4, ss: 1.3,   mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
 oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
 phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10, p_mstc: 10, risk: 100, dec_p: 4}
@@ -86,15 +87,19 @@ def set_test_bots():
     test_bots.append(phillipe_025_bot)
 
 
-def run_test_bots():
+def run_test_bots(bot_ph):
     for coin in test_coins:
         df = get_data_from_api(coin)
         for bot in test_bots:
-            print("\n=========================  {}  ===============================".format(bot[bn]))
+            #print("\n=========================  {}  ===============================".format(bot[bn]))
             for take_profit in take_profits:
+                #print(take_profit)
                 bot_config = create_config(bot, coin, take_profit)
                 #print("Running Coin: {} bot {} with tp {} from {} to {} \n".format(coin, bot_config, take_profit, coin[start_date],coin[end_date]))
-                run_dca_bot(config=bot_config, dfData=df)
+                run_dca_bot(config=bot_config, dfData=df, bot_profit_history=bot_ph)
+                # bot_profit = BotProfitHistory.bot_profit_history
+                # bot_profit = BotProfitHistory.bot_profit_history
+
 
 def get_data_from_api(coin):
     sd = coin[start_date]
@@ -104,11 +109,12 @@ def get_data_from_api(coin):
 
     if override_end_date != "":
         ed = override_end_date
-    print("\n******************************************************  {} : {} - {} ******************************************************".format(coin[cn], sd, ed))
+    #print("\n******************************************************  {} : {} - {} ******************************************************".format(coin[cn], sd, ed))
     return yf.download(coin[cn], start=sd, end=ed)
 
 def create_config(bot, coin, take_profit):
-    return BotConfig(config_name=bot[bn],
+    return BotConfig(coin_name=coin[cn],
+                     config_bot_name=bot[bn],
                      order_tp=take_profit,
                      base_order_volume=bot[bo],
                      safety_order_volume=bot[so],
@@ -123,7 +129,7 @@ def create_config(bot, coin, take_profit):
                      is_multi_bot=True)
 
 
-def run_dca_bot(config, coin=None, start_date=None, end_date=None, dfData=None):
+def run_dca_bot(config, coin=None, start_date=None, end_date=None, dfData=None, bot_profit_history=None):
     initial_BR = 200000
     cerebro = bt.Cerebro()
     cerebro.broker.setcash(initial_BR)
@@ -132,12 +138,14 @@ def run_dca_bot(config, coin=None, start_date=None, end_date=None, dfData=None):
     cerebro.broker.set_coo(False)
     cerebro.broker.setcommission(commission=0.001)
     cerebro.adddata(feed)
-    cerebro.addstrategy(DCAStrat, config=config)
+    cerebro.addstrategy(DCAStrat, config=config, bot_history=bot_profit_history)
     cerebro.run()
 
 
 if __name__ == "__main__":
     print(">main")
+    bot_profit_history = BotProfitHistory()
     set_test_coins()
     set_test_bots()
-    run_test_bots()
+    run_test_bots(bot_profit_history)
+    bot_profit_history.print_profits()
