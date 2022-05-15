@@ -4,6 +4,11 @@ vendor/
 reports/
 bin/
 public/
+__pycache__/
+__pycache__/.*
+.pytest_cache/
+.cache
+
 run.local.sh
 
 # Files
@@ -14,3 +19,6 @@ service-click2buy-offers
 after_output.log
 *load-tests-result.txt
 test*.out
+backtest_result*
+*.py[cod]
+*$py.class
