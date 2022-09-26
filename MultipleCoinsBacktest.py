@@ -45,7 +45,7 @@ cro_coin   = {cn: "CRO-USD",    start_date: '2022-01-01', end_date: '2022-05-01'
 leo_coin   = {cn: "LEO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 near_coin  = {cn: "NEAR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
 ftt_coin   = {cn: "FTT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-uni_coin   = {cn: "UNI1-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
+uni_coin   = {cn: "UNI1-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 link_coin  = {cn: "LINK-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 xlm_coin   = {cn: "XLM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 atom_coin  = {cn: "ATOM-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
@@ -104,7 +104,7 @@ amp_coin   = {cn: "AMP-USD",    start_date: '2022-01-01', end_date: '2022-05-01'
 kda_coin   = {cn: "KDA-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 mina_coin  = {cn: "MINA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 ar_coin    = {cn: "AR-USD",     start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-comp_coin  = {cn: "COMP1-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
+comp_coin  = {cn: "COMP1-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 xem_coin   = {cn: "XEM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 dcr_coin   = {cn: "DCR-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 hot_coin   = {cn: "HOT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
@@ -122,7 +122,7 @@ shib_coin  = {cn: "SHIB-USD",   start_date: '2022-01-01', end_date: '2022-05-01'
 ctsi_coin  = {cn: "CTSI-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
 
 
-ta_bot           = {bn: "TA standard", bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
+ta_bot           = {bn: "TA standard",         bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
 mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4, ss: 1.3,   mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
 oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
 phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10, p_mstc: 10, risk: 100, dec_p: 4}
