@@ -1,5 +1,10 @@
+import datetime
+import matplotlib.pyplot as plt
+
+
 import backtrader as bt
 import yfinance as yf
+import pandas as pd
 
 import BotConfig
 from BotConfig import BotConfig
@@ -22,16 +27,16 @@ cn = "coin_name"
 start_date = "start_date"
 end_date = "end_date"
 
-override_start_date = '2022-01-01'
-override_end_date = '2022-05-01'
+override_start_date = ''#'2022-01-01'
+override_end_date = ''#'2022-05-01'
 
 test_bots = []
 test_coins = []
 
-take_profits = [1, 1.25, 2, 3, 4, 5, 10, 15, 20, 30, 50, 100]
+take_profits = [0.8]#[1, 1.25, 2, 3, 4, 5, 10, 15, 20, 30, 50, 100]
 
 btc_coin   = {cn: "BTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-eth_coin   = {cn: "ETH-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
+eth_coin   = {cn: "ETH-USD",    start_date: '2022-08-09', end_date: '2022-09-26', is_not_divisible: False}
 bnb_coin   = {cn: "BNB-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 xrp_coin   = {cn: "XRP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 ada_coin   = {cn: "ADA-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
@@ -122,112 +127,114 @@ shib_coin  = {cn: "SHIB-USD",   start_date: '2022-01-01', end_date: '2022-05-01'
 ctsi_coin  = {cn: "CTSI-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
 
 
-ta_bot           = {bn: "TA standard",         bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
-mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4, ss: 1.3,   mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
-oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
-phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10, p_mstc: 10, risk: 100, dec_p: 4}
-phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11, p_mstc: 11, risk: 100, dec_p: 4}
+oni_aggressive    = {bn: "Oni Agrressive",       bo: 50.00, so: 50.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 10,  risk: 100, dec_p: 4}
+#ta_bot           = {bn: "TA standard",         bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
+#mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4, ss: 1.3,   mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
+#oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
+#phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10, p_mstc: 10, risk: 100, dec_p: 4}
+#phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11, p_mstc: 11, risk: 100, dec_p: 4}
 
 
 def set_test_coins():
-    test_coins.append(btc_coin)
+    #test_coins.append(btc_coin)
     test_coins.append(eth_coin)
-    test_coins.append(bnb_coin)
-    test_coins.append(xrp_coin)
-    test_coins.append(ada_coin)
-    test_coins.append(sol_coin)
-    test_coins.append(doge_coin)
-    test_coins.append(dot_coin)
-    test_coins.append(trx_coin)
-    test_coins.append(matic_coin)
-    test_coins.append(lite_coin)
-    test_coins.append(cro_coin)
-    test_coins.append(leo_coin)
-    test_coins.append(near_coin)
-    test_coins.append(ftt_coin)
-    test_coins.append(uni_coin)
-    test_coins.append(link_coin)
-    test_coins.append(xlm_coin)
-    test_coins.append(atom_coin)
-    test_coins.append(algo_coin)
-    test_coins.append(flow_coin)
-    test_coins.append(xmr_coin)
-    test_coins.append(ape_coin)
-    test_coins.append(mana_coin)
-    test_coins.append(hbar_coin)
-    test_coins.append(vet_coin)
-    test_coins.append(icp_coin)
-    test_coins.append(egld_coin)
-    test_coins.append(fil_coin)
-    test_coins.append(xtz_coin)
-    test_coins.append(sand_coin)
-    test_coins.append(mkr_coin)
-    test_coins.append(zec_coin)
-    test_coins.append(theta_coin)
-    test_coins.append(grp_coin)
-    test_coins.append(eos_coin)
-    test_coins.append(kcs_coin)
-    test_coins.append(axs_coin)
-    test_coins.append(cake_coin)
-    test_coins.append(aave_coin)
-    test_coins.append(hnt_coin)
-    test_coins.append(rune_coin)
-    test_coins.append(klay_coin)
-    test_coins.append(ht_coin)
-    test_coins.append(btt_coin)
-    test_coins.append(miota_coin)
-    test_coins.append(ftm_coin)
-    test_coins.append(gmt_coin)
-    test_coins.append(qnt_coin)
-    #test_coins.append(xec_coin)
-    test_coins.append(okb_coin)
-    test_coins.append(nexo_coin)
-    test_coins.append(neo_coin)
-    test_coins.append(stx_coin)
-    test_coins.append(waves_coin)
-    test_coins.append(chz_coin)
-    test_coins.append(cvx_coin)
-    test_coins.append(celo_coin)
-    test_coins.append(gala_coin)
-    test_coins.append(dash_coin)
-    test_coins.append(zil_coin)
-    test_coins.append(crv_coin)
-    test_coins.append(enj_coin)
-    test_coins.append(lrc_coin)
-    test_coins.append(ksm_coin)
-    test_coins.append(bat_coin)
-    test_coins.append(xdc_coin)
-    test_coins.append(one_coin)
-    test_coins.append(paxg_coin)
-    test_coins.append(gno_coin)
-    test_coins.append(amp_coin)
-    test_coins.append(kda_coin)
-    test_coins.append(mina_coin)
-    test_coins.append(ar_coin)
-    test_coins.append(comp_coin)
-    test_coins.append(xem_coin)
-    test_coins.append(dcr_coin)
-    test_coins.append(hot_coin)
-    test_coins.append(ldo_coin)
-    test_coins.append(kava_coin)
-    test_coins.append(gt_coin)
-    test_coins.append(qtum_coin)
-    test_coins.append(fei_coin)
-    test_coins.append(bnt_coin)
-    test_coins.append(oinch_coin)
-    test_coins.append(xym_coin)
-    test_coins.append(fet_coin)
-    test_coins.append(ankr_coin)
-    #test_coins.append(shib_coin)
-    test_coins.append(ctsi_coin)
+    #test_coins.append(bnb_coin)
+    #test_coins.append(xrp_coin)
+    #test_coins.append(ada_coin)
+    #test_coins.append(sol_coin)
+    #test_coins.append(doge_coin)
+    #test_coins.append(dot_coin)
+    #test_coins.append(trx_coin)
+    #test_coins.append(matic_coin)
+    #test_coins.append(lite_coin)
+    #test_coins.append(cro_coin)
+    #test_coins.append(leo_coin)
+    #test_coins.append(near_coin)
+    #test_coins.append(ftt_coin)
+    #test_coins.append(uni_coin)
+    #test_coins.append(link_coin)
+    #test_coins.append(xlm_coin)
+    #test_coins.append(atom_coin)
+    #test_coins.append(algo_coin)
+    #test_coins.append(flow_coin)
+    #test_coins.append(xmr_coin)
+    #test_coins.append(ape_coin)
+    #test_coins.append(mana_coin)
+    #test_coins.append(hbar_coin)
+    #test_coins.append(vet_coin)
+    #test_coins.append(icp_coin)
+    #test_coins.append(egld_coin)
+    #test_coins.append(fil_coin)
+    #test_coins.append(xtz_coin)
+    #test_coins.append(sand_coin)
+    #test_coins.append(mkr_coin)
+    #test_coins.append(zec_coin)
+    #test_coins.append(theta_coin)
+    #test_coins.append(grp_coin)
+    #test_coins.append(eos_coin)
+    #test_coins.append(kcs_coin)
+    #test_coins.append(axs_coin)
+    #test_coins.append(cake_coin)
+    #test_coins.append(aave_coin)
+    #test_coins.append(hnt_coin)
+    #test_coins.append(rune_coin)
+    #test_coins.append(klay_coin)
+    #test_coins.append(ht_coin)
+    #test_coins.append(btt_coin)
+    #test_coins.append(miota_coin)
+    #test_coins.append(ftm_coin)
+    #test_coins.append(gmt_coin)
+    #test_coins.append(qnt_coin)
+    ##test_coins.append(xec_coin)
+    #test_coins.append(okb_coin)
+    #test_coins.append(nexo_coin)
+    #test_coins.append(neo_coin)
+    #test_coins.append(stx_coin)
+    #test_coins.append(waves_coin)
+    #test_coins.append(chz_coin)
+    #test_coins.append(cvx_coin)
+    #test_coins.append(celo_coin)
+    #test_coins.append(gala_coin)
+    #test_coins.append(dash_coin)
+    #test_coins.append(zil_coin)
+    #test_coins.append(crv_coin)
+    #test_coins.append(enj_coin)
+    #test_coins.append(lrc_coin)
+    #test_coins.append(ksm_coin)
+    #test_coins.append(bat_coin)
+    #test_coins.append(xdc_coin)
+    #test_coins.append(one_coin)
+    #test_coins.append(paxg_coin)
+    #test_coins.append(gno_coin)
+    #test_coins.append(amp_coin)
+    #test_coins.append(kda_coin)
+    #test_coins.append(mina_coin)
+    #test_coins.append(ar_coin)
+    #test_coins.append(comp_coin)
+    #test_coins.append(xem_coin)
+    #test_coins.append(dcr_coin)
+    #test_coins.append(hot_coin)
+    #test_coins.append(ldo_coin)
+    #test_coins.append(kava_coin)
+    #test_coins.append(gt_coin)
+    #test_coins.append(qtum_coin)
+    #test_coins.append(fei_coin)
+    #test_coins.append(bnt_coin)
+    #test_coins.append(oinch_coin)
+    #test_coins.append(xym_coin)
+    #test_coins.append(fet_coin)
+    #test_coins.append(ankr_coin)
+    ##test_coins.append(shib_coin)
+    #test_coins.append(ctsi_coin)
 
 
 def set_test_bots():
-    test_bots.append(ta_bot)
-    test_bots.append(mars_bot)
-    test_bots.append(oni_bot)
-    test_bots.append(phillipe_bot)
-    test_bots.append(phillipe_025_bot)
+    test_bots.append(oni_aggressive)
+    #test_bots.append(ta_bot)
+    #test_bots.append(mars_bot)
+    #test_bots.append(oni_bot)
+    #test_bots.append(phillipe_bot)
+    #test_bots.append(phillipe_025_bot)
 
 
 def run_test_bots(bot_ph):
@@ -248,7 +255,40 @@ def get_data_from_api(coin):
 
     if override_end_date != "":
         ed = override_end_date
-    return yf.download(coin[cn], start=sd, end=ed)
+    if False:
+        return yf.download(coin[cn], start=sd, end=ed)
+
+
+    pathfile = '../Historical Data/Eth/ethusd-2022.csv'
+    #data = pd.read_csv(pathfile, parse_dates=True,)
+    #data['time'] = pd.to_datetime(data['time'], unit='ms')
+    #data.dtypes
+    #print(arr)
+    #data['time'] = data['time'].dt.strftime('%d-%m-%Y %H:%M')
+
+    #print(data)
+    #print(df.keys())
+
+
+    #-------
+
+    data = (bt.feeds.GenericCSVData(
+        dataname=pathfile,
+        dtformat=lambda x: datetime.datetime.utcfromtimestamp(float(x) / 1000.0),
+        timeframe=bt.TimeFrame.Minutes,
+        compression=1,
+        nullvalue=0.0,
+        datetime=0,
+        open=1,
+        high=3,
+        low=4,
+        close=2,
+        volume=5,
+        openinterest=-1
+
+    ))
+
+    return data
 
 def create_config(bot, coin, take_profit):
     return BotConfig(coin_name=coin[cn],
@@ -271,14 +311,24 @@ def run_dca_bot(config, coin=None, start_date=None, end_date=None, dfData=None, 
     initial_BR = 200000
     cerebro = bt.Cerebro()
     cerebro.broker.setcash(initial_BR)
-    feed = bt.feeds.PandasData(dataname=dfData)
+    #feed = bt.feeds.PandasData(dataname=dfData)
+
+    #print(dfData.keys())
+
+    #feed = bt.feeds.PandasData(dataname=dfData)
+
     cerebro.broker.set_coc(False)
     cerebro.broker.set_coo(False)
     cerebro.broker.setcommission(commission=0.001)
-    cerebro.adddata(feed)
+    cerebro.adddata(dfData)
     cerebro.addstrategy(DCAStrat, config=config, bot_history=bot_profit_history)
     cerebro.run()
 
+    #ENABLE PLOT HERE
+    #plt.rcParams['figure.dpi'] = 100
+    # plt.rcParams['figure.figsize'] = [20, 12]
+    #plt.rcParams['figure.figsize'] = [10, 8]
+    #cerebro.plot(style='candlestick', height=3000, width=3000, dpi=10000)
 
 if __name__ == "__main__":
     bot_profit_history = BotProfitHistory()

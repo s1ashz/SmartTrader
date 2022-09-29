@@ -97,7 +97,6 @@ class DCAStrat(bt.Strategy):
         if total_vol > affordable_bot_cost:
             self.bot_risk_surpassed_times += 1
 
-        # print("NEW CALCULATE PROFIT MWAHAHA", total_vol,  net_profit, avg_price, size)
         return net_profit - total_vol
 
     def calculate_bot_total_cost(self):
@@ -172,6 +171,9 @@ class DCAStrat(bt.Strategy):
 
     def next(self):
         self.bar_count += 1
+
+        # IN CSV: open,close,high,low,volume
+        #print(self.data.open[0], self.data.low[0], self.data.high[0], self.data.close[0])
 
         if self.bar_count > 1111112:
             return
@@ -620,14 +622,14 @@ class DCAStrat(bt.Strategy):
             bot_config=self.params.config
         )
         self.bot_profit_history.add_profit(prof)
-        # print("Bot Risk: {}%".format(self.config_risk_value * 100))
-        # print("Number of times Bot volume surpassed risk volume: {}".format(self.bot_risk_surpassed_times))
-        # print("Number of times Bot reached extra mstc: {}".format(self.bot_extra_mstc_reached_times))
-        # print("Total Bot Cost: {:.2f}".format(self.total_bot_cost))
-        # print("Total Bot ROI: {:.2f}%".format((self.total_bot_profit / self.total_bot_cost) * 100))
-        # print("Daily Bot ROI: {:.2f}%".format(((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100))
-        # print("Total Bot Profit: {:.2f}".format(self.total_bot_profit))
-        # print("")
+        print("Bot Risk: {}%".format(self.config_risk_value * 100))
+        print("Number of times Bot volume surpassed risk volume: {}".format(self.bot_risk_surpassed_times))
+        print("Number of times Bot reached extra mstc: {}".format(self.bot_extra_mstc_reached_times))
+        print("Total Bot Cost: {:.2f}".format(self.total_bot_cost))
+        print("Total Bot ROI: {:.2f}%".format((self.total_bot_profit / self.total_bot_cost) * 100))
+        print("Daily Bot ROI: {:.2f}%".format(((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100))
+        print("Total Bot Profit: {:.2f}".format(self.total_bot_profit))
+        print("")
 
     def staticMethodTest(self, profit):
         return profit
