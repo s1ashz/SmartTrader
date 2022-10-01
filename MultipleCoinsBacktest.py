@@ -260,7 +260,7 @@ def get_data_from_api(coin):
 
 
     #pathfile = '../Historical Data/Eth/ethusd.csv'
-    pathfile = '../Historical Data/Formatted Data/ethusd-complete.csv'
+    pathfile = '../Historical Data/Formatted Data/eth/ethusd-f-completed.csv'
     #data = pd.read_csv(pathfile, parse_dates=True,)
     #data['time'] = pd.to_datetime(data['time'], unit='ms')
     #data.dtypes

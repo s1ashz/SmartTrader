@@ -640,15 +640,17 @@ class DCAStrat(bt.Strategy):
             bot_config=self.params.config
         )
         self.bot_profit_history.add_profit(prof)
-        print("Bot Risk: {}%".format(self.config_risk_value * 100))
-        print("Total Bars: {}".format(self.bar_count))
         print("Date: {} - {}".format(self.start_date, self.datetime.date(ago=0)))
+        print("Bot: {}".format(self.config_bot_name))
+        print("Bot TP: {}".format(self.config_order_tp))
+        print("Total Bot Profit: {:.2f} $".format(self.total_bot_profit))
+        print("Daily Bot ROI: {:.2f}%".format(((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100))
+        print("Total Bot ROI: {:.2f}%".format((self.total_bot_profit / self.total_bot_cost) * 100))
+        print("Total Bars: {}".format(self.bar_count))
         print("Number of times Bot volume surpassed risk volume: {}".format(self.bot_risk_surpassed_times))
         print("Number of times Bot reached extra mstc: {}".format(self.bot_extra_mstc_reached_times))
+        print("Bot Risk: {}%".format(self.config_risk_value * 100))
         print("Total Bot Cost: {:.2f}".format(self.total_bot_cost))
-        print("Total Bot ROI: {:.2f}%".format((self.total_bot_profit / self.total_bot_cost) * 100))
-        print("Daily Bot ROI: {:.2f}%".format(((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100))
-        print("Total Bot Profit: {:.2f}".format(self.total_bot_profit))
         print("")
 
     def staticMethodTest(self, profit):
