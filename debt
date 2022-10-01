@@ -1,0 +1,4 @@
+1 - Limit order: time to get filled
+    Implement a system to delay the next order, to replicate the behaviour of the application inserting a new limit order
+    if "waiting", check total candle top and botom, divide by 60 (if candle is minute/hour) or 24 (if candle is an hour)
+    Then "wait" 30 seconds
