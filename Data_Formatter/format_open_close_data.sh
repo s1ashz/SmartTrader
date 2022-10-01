@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-
 csv_file=$1
-csv_file_name="${csv_file%.*}"
+csv_file_dir="${csv_file%/*}"
+csv_file_name="${csv_file##*/}"
 csv_file_extension=${csv_file##*.}
-csv_formatted_file="$csv_file_name-f.$csv_file_extension"
+csv_formatted_file="$csv_file_dir/results/$csv_file_name-f.$csv_file_extension"
+
 
 first_line="true"
 second_line="true"
