@@ -58,6 +58,7 @@ class DCAStrat(bt.Strategy):
     is_bot_active = False
     stopped = False
 
+    start_date = None
     current_start_price = None
     current_avg_buy = None
     current_size = None
@@ -114,6 +115,7 @@ class DCAStrat(bt.Strategy):
     # Bot por 1 run parece correcto. Testar para varias trades
 
     def clean_all_bot_status(self):
+        self.start_date = 0
         self.my_orders = []
         self.bot_last_active_order = {}
         self.map_bot_safety_orders = {}
@@ -169,13 +171,18 @@ class DCAStrat(bt.Strategy):
                                                                               self.data.open[1], self.data.close[1],
                                                                               self.data.high[1]))
 
+    def print_next_bar_ORDERED(self):
+        print("\t>>>Next Bar {}:open: {}, close: {}, high {}, low {} ".format(self.bar_count + 1, self.data.open[1],
+                                                                              self.data.close[1], self.data.high[1], self.data.low[1]))
+
+
     def next(self):
         self.bar_count += 1
 
         # IN CSV: open,close,high,low,volume
-        #print(self.data.open[0], self.data.low[0], self.data.high[0], self.data.close[0])
+        #print(self.data.open[0], self.data.close[0], self.data.high[0], self.data.low[0])
 
-        if self.bar_count > 1111112:
+        if self.bar_count > 90000000:
             return
 
         try:
@@ -189,20 +196,31 @@ class DCAStrat(bt.Strategy):
 
         if self.bar_count == 1:
             # self.print_first_bar()
-            self.start_bot(self.data.close[0])
+            self.start_date = self.datetime.date(ago=0)
+            self.start_bot(self.data.open[1])
 
         # self.print_next_bar()
+        # self.print_next_bar_ORDERED()
 
         # if not self.is_bot_active:
         #    self.start_bot(self.data.close[0])
         #    return
+        o = self.data.open[1]
+        c = self.data.close[1]
+        h = self.data.high[1]
+        l = self.data.low[1]
 
         self.peak_next_bar(self.data)
 
     def graceful_stop_current_trade(self, data):
         # print(">gracefully stopping last trade")
+
+        buy_denominator = data.high[1] - data.low[1]
+        if buy_denominator == 0:
+            buy_denominator = data.high[1]
+
         buy_size = ((self.current_avg_buy * self.current_size) - (self.current_size * data.high[1])) / (
-                data.high[1] - data.low[1])
+                buy_denominator)
         order_buy = self.buy(exectype=bt.Order.StopLimit, size=buy_size, price=data.low[1])
         self.map_bot_safety_orders["last"] = BotOrder(order_volume=buy_size * data.low[1],
                                                       order_price=data.low[1],
@@ -392,7 +410,7 @@ class DCAStrat(bt.Strategy):
                         order_status=BotStatus.FILLED)
 
     def create_first_safety_bot_order(self, order):
-        so1_base_ss = self.config_order_safety_sos  # 1.25%
+        so1_base_ss = self.config_order_safety_sos
         so1_incremental_ss = self.config_order_safety_sos
         so1_total_ss = self.config_order_safety_sos
 
@@ -511,7 +529,7 @@ class DCAStrat(bt.Strategy):
         if order.status in [order.Completed]:
             if order.isbuy():
                 # self.log("BUY EXECUTED ref:{}, price: {} size: {}".format(order.ref, order.executed.price,
-                #                                                          order.executed.size))
+                #                                                           order.executed.size))
                 self.current_SO += 1
             elif order.issell():
                 # print("SELLL -> last active orders ", self.bot_last_active_order)
@@ -590,7 +608,7 @@ class DCAStrat(bt.Strategy):
         print("Total Bot Profit: {:.2f}".format(self.total_bot_profit))
         print("")
 
-    def print_dca_multi_bot(self):
+    def print_dca_multi_bot(self): # THIS IS NOT DOING ANYTHING...
         tp = (self.config_order_tp - 1) * 100
         daily_roi = ((self.total_bot_profit / self.bar_count) / self.total_bot_cost) * 100
         total_roi = (self.total_bot_profit / self.total_bot_cost) * 100
@@ -623,6 +641,8 @@ class DCAStrat(bt.Strategy):
         )
         self.bot_profit_history.add_profit(prof)
         print("Bot Risk: {}%".format(self.config_risk_value * 100))
+        print("Total Bars: {}".format(self.bar_count))
+        print("Date: {} - {}".format(self.start_date, self.datetime.date(ago=0)))
         print("Number of times Bot volume surpassed risk volume: {}".format(self.bot_risk_surpassed_times))
         print("Number of times Bot reached extra mstc: {}".format(self.bot_extra_mstc_reached_times))
         print("Total Bot Cost: {:.2f}".format(self.total_bot_cost))
@@ -633,4 +653,3 @@ class DCAStrat(bt.Strategy):
 
     def staticMethodTest(self, profit):
         return profit
-
