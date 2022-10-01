@@ -23,6 +23,7 @@ class BotProfit:
                  config_risk_value=None,
                  bot_risk_surpassed_times=None,
                  bot_extra_mstc_reached_times=None,
+                 profit_if_bot_money_invested=None,
                  bar_count=None,
                  bot_number=None,
                  bot_config=None,
@@ -38,4 +39,5 @@ class BotProfit:
         self.bot_extra_mstc_reached_times = bot_extra_mstc_reached_times
         self.bar_count = bar_count
         self.bot_number = bot_number
+        self.profit_if_bot_money_invested = profit_if_bot_money_invested
         self.bot_config = bot_config

@@ -59,6 +59,8 @@ class DCAStrat(bt.Strategy):
     stopped = False
 
     start_date = None
+    initial_open_price = None
+    bot_money_invested_in_trade_profit = None
     current_start_price = None
     current_avg_buy = None
     current_size = None
@@ -115,6 +117,8 @@ class DCAStrat(bt.Strategy):
     # Bot por 1 run parece correcto. Testar para varias trades
 
     def clean_all_bot_status(self):
+        self.initial_open_price = 0
+        self.bot_money_invested_in_trade_profit = 0
         self.start_date = 0
         self.my_orders = []
         self.bot_last_active_order = {}
@@ -190,13 +194,18 @@ class DCAStrat(bt.Strategy):
             self.current_bot_close_price = self.data.close[2]
         except IndexError:
             if not self.stopped:
+                self.calculate_bot_money_invested_in_trade_profit(self.data)
                 self.graceful_stop_current_trade(self.data)
                 self.stopped = True
             return
 
         if self.bar_count == 1:
+            #print(self.datetime.date(ago=0))
+            #print(self.data.open[0])
+
             # self.print_first_bar()
             self.start_date = self.datetime.date(ago=0)
+            self.initial_open_price = self.data.open[1]
             self.start_bot(self.data.open[1])
 
         # self.print_next_bar()
@@ -637,7 +646,8 @@ class DCAStrat(bt.Strategy):
             bot_extra_mstc_reached_times=self.bot_extra_mstc_reached_times,
             bar_count=self.bar_count,
             bot_number=self.bot_number,
-            bot_config=self.params.config
+            bot_config=self.params.config,
+            profit_if_bot_money_invested=self.bot_money_invested_in_trade_profit
         )
         self.bot_profit_history.add_profit(prof)
         print("Date: {} - {}".format(self.start_date, self.datetime.date(ago=0)))
@@ -651,7 +661,13 @@ class DCAStrat(bt.Strategy):
         print("Number of times Bot reached extra mstc: {}".format(self.bot_extra_mstc_reached_times))
         print("Bot Risk: {}%".format(self.config_risk_value * 100))
         print("Total Bot Cost: {:.2f}".format(self.total_bot_cost))
+        print("Total Profit if bot money invested in trade: {:.2f}".format(self.bot_money_invested_in_trade_profit))
         print("")
 
     def staticMethodTest(self, profit):
         return profit
+
+    def calculate_bot_money_invested_in_trade_profit(self, data):
+        initial_bough_size = self.calculate_size(self.total_bot_cost, self.initial_open_price)
+        current_price = data.close[0]
+        self.bot_money_invested_in_trade_profit = current_price * initial_bough_size
