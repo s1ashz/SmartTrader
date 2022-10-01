@@ -33,7 +33,7 @@ override_end_date = ''#'2022-05-01'
 test_bots = []
 test_coins = []
 
-take_profits = [0.8]#[1, 1.25, 2, 3, 4, 5, 10, 15, 20, 30, 50, 100]
+take_profits = [0.8, 1, 1.25, 2, 3, 4, 5, 10, 15, 20, 30, 50, 100]
 
 btc_coin   = {cn: "BTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
 eth_coin   = {cn: "ETH-USD",    start_date: '2022-08-09', end_date: '2022-09-26', is_not_divisible: False}
@@ -127,12 +127,12 @@ shib_coin  = {cn: "SHIB-USD",   start_date: '2022-01-01', end_date: '2022-05-01'
 ctsi_coin  = {cn: "CTSI-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
 
 
-oni_aggressive    = {bn: "Oni Agrressive",       bo: 50.00, so: 50.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 10,  risk: 100, dec_p: 4}
-#ta_bot           = {bn: "TA standard",         bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
-#mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4, ss: 1.3,   mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
-#oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 9,  p_mstc: 8,  risk: 100, dec_p: 4}
-#phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10, p_mstc: 10, risk: 100, dec_p: 4}
-#phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11, p_mstc: 11, risk: 100, dec_p: 4}
+oni_aggressive   = {bn: "Oni Agrressive",       bo: 50.00, so: 50.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 10,  risk: 100, dec_p: 4}
+ta_bot           = {bn: "TA standard",         bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
+mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4, ss: 1.3,   mstc: 10,  p_mstc: 8,  risk: 100, dec_p: 4}
+oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 8,  risk: 100, dec_p: 4}
+phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10, p_mstc: 10, risk: 100, dec_p: 4}
+phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11, p_mstc: 11, risk: 100, dec_p: 4}
 
 
 def set_test_coins():
@@ -230,11 +230,11 @@ def set_test_coins():
 
 def set_test_bots():
     test_bots.append(oni_aggressive)
-    #test_bots.append(ta_bot)
-    #test_bots.append(mars_bot)
-    #test_bots.append(oni_bot)
-    #test_bots.append(phillipe_bot)
-    #test_bots.append(phillipe_025_bot)
+    test_bots.append(ta_bot)
+    test_bots.append(mars_bot)
+    test_bots.append(oni_bot)
+    test_bots.append(phillipe_bot)
+    test_bots.append(phillipe_025_bot)
 
 
 def run_test_bots(bot_ph):
@@ -259,7 +259,8 @@ def get_data_from_api(coin):
         return yf.download(coin[cn], start=sd, end=ed)
 
 
-    pathfile = '../Historical Data/Eth/ethusd-2022.csv'
+    #pathfile = '../Historical Data/Eth/ethusd.csv'
+    pathfile = '../Historical Data/Formatted Data/ethusd-complete.csv'
     #data = pd.read_csv(pathfile, parse_dates=True,)
     #data['time'] = pd.to_datetime(data['time'], unit='ms')
     #data.dtypes
@@ -280,9 +281,9 @@ def get_data_from_api(coin):
         nullvalue=0.0,
         datetime=0,
         open=1,
+        close=2,
         high=3,
         low=4,
-        close=2,
         volume=5,
         openinterest=-1
 
@@ -325,10 +326,10 @@ def run_dca_bot(config, coin=None, start_date=None, end_date=None, dfData=None, 
     cerebro.run()
 
     #ENABLE PLOT HERE
-    #plt.rcParams['figure.dpi'] = 100
+    # plt.rcParams['figure.dpi'] = 100
     # plt.rcParams['figure.figsize'] = [20, 12]
-    #plt.rcParams['figure.figsize'] = [10, 8]
-    #cerebro.plot(style='candlestick', height=3000, width=3000, dpi=10000)
+    # plt.rcParams['figure.figsize'] = [10, 8]
+    # cerebro.plot(style='candlestick', height=3000, width=3000, dpi=10000)
 
 if __name__ == "__main__":
     bot_profit_history = BotProfitHistory()
