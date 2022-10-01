@@ -21,7 +21,9 @@ class BotProfitHistory:
 
     def print_profits(self):
         print(",".join(self.bot_profit_history.keys()))
-        print("Bot, Coin, TP, Profit, Daily ROI, ROI, Bot Cost, Risk, Nº>risk, Nº>mstc, bot_numb")
+        header_val = ["Bot", "Coin", "TP", "Profit", "Daily ROI", "ROI", "Bot Cost", "Risk", "Nº>risk", "Nº>mstc", "bot_numb"]
+        header = "{:>18},{:>10},{:>6}%,{:>11},{:>13},{:>10},{:>12},{:>9},{:>10},{:>10},{:>10}"
+        print(header.format(*header_val))
         for coin, coin_bots in self.bot_profit_history.items():
             print("")
             print("'============ {} ============".format(coin))
@@ -33,10 +35,10 @@ class BotProfitHistory:
                     total_roi = (bot.total_bot_profit / bot.total_bot_cost) * 100
                     str = "Bot: {:13}, Coin: {:8}, TP:{:6.2f}%, Profit:{:7.2f}, Daily ROI:{:4.2f}%, ROI:{:5.2f}%, Bot Cost:{:6.2f}, Risk:{}, Nº>risk:{}, Nº>mstc:{}, bot_numb:{:3}"
                     if self.excel_print:
-                        excelStr = "{:13},{:8},{:6.2f}%,{:7.2f},{:4.2f}%,{:5.2f}%,{:6.2f},{},{},{},{:3}"
+                        excelStr = "{:>18},{:>10},{:>6.2f}%,{:>9.2f} $,{:>11.2f} %,{:>8.2f} %,{:>12.2f},{:>7.0f} %,{:>10},{:>10},{:>10}"
                         str = excelStr
 
-                    risk_value = bot.config_risk_value * 100
+                    risk_value = bot.config_risk_value# * 100
                     print(str.format(bot.bot_name,
                                      coin,
                                      tp,
