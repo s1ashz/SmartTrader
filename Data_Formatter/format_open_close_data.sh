@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
+echo "Current date: $(date)"
+
 csv_file=$1
 csv_file_dir="${csv_file%/*}"
 csv_file_name="${csv_file##*/}"
 csv_file_extension=${csv_file##*.}
-csv_formatted_file="$csv_file_dir/results/$csv_file_name-f.$csv_file_extension"
+csv_formatted_file="$csv_file_dir/formatted/$csv_file_name-f.$csv_file_extension"
 
 
 first_line="true"
@@ -43,11 +45,8 @@ read_file() {
 write_to_file() {
 	line=$1
 	#echo "writing.....$line"
-	echo $line >> $csv_formatted_file
+	echo $line | tr ' ' ',' >> $csv_formatted_file
 }
 
 read_file
 echo "done"
-
-
-

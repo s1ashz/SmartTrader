@@ -9,7 +9,6 @@ pwd
 for file in $dir/*
 do
   #cmd [option] "$file" >> results.out
-  mkdir -p $dir/results
+  mkdir -p $dir/formatted
   ./$executer $file
-
 done
