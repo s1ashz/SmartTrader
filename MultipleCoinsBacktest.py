@@ -26,6 +26,8 @@ dec_p = "decimal_places"
 cn = "coin_name"
 start_date = "start_date"
 end_date = "end_date"
+has_file = False
+file_path = "none"
 
 override_start_date = ''#'2022-01-01'
 override_end_date = ''#'2022-05-01'
@@ -35,96 +37,96 @@ test_coins = []
 
 take_profits = [0.8, 1, 1.25, 2, 3, 4, 5, 10, 15, 20, 30, 50, 100]
 
-btc_coin   = {cn: "BTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-eth_coin   = {cn: "ETH-USD",    start_date: '2022-08-09', end_date: '2022-09-26', is_not_divisible: False}
-bnb_coin   = {cn: "BNB-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-xrp_coin   = {cn: "XRP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-ada_coin   = {cn: "ADA-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-sol_coin   = {cn: "SOL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-doge_coin  = {cn: "DOGE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-dot_coin   = {cn: "DOT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-trx_coin   = {cn: "TRX-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-matic_coin = {cn: "MATIC-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-lite_coin  = {cn: "LTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-cro_coin   = {cn: "CRO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-leo_coin   = {cn: "LEO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-near_coin  = {cn: "NEAR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
-ftt_coin   = {cn: "FTT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-uni_coin   = {cn: "UNI1-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-link_coin  = {cn: "LINK-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-xlm_coin   = {cn: "XLM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-atom_coin  = {cn: "ATOM-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-algo_coin  = {cn: "ALGO-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-flow_coin  = {cn: "FLOW-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-xmr_coin   = {cn: "XMR-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-ape_coin   = {cn: "APE-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-mana_coin  = {cn: "MANA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
-hbar_coin  = {cn: "HBAR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-vet_coin   = {cn: "VET-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-icp_coin   = {cn: "ICP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-egld_coin  = {cn: "EGLD-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-fil_coin   = {cn: "FIL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-xtz_coin   = {cn: "XTZ-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-sand_coin  = {cn: "SAND-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-mkr_coin   = {cn: "MKR-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-zec_coin   = {cn: "ZEC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-theta_coin = {cn: "THETA-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-grp_coin   = {cn: "GRT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-eos_coin   = {cn: "EOS-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-kcs_coin   = {cn: "KCS-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-axs_coin   = {cn: "AXS-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-cake_coin  = {cn: "CAKE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-aave_coin  = {cn: "AAVE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-hnt_coin   = {cn: "HNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-rune_coin  = {cn: "RUNE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-klay_coin  = {cn: "KLAY-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-ht_coin    = {cn: "HT-USD",     start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-btt_coin   = {cn: "BTT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-miota_coin = {cn: "MIOTA-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-ftm_coin   = {cn: "FTM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
-gmt_coin   = {cn: "GMT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-qnt_coin   = {cn: "QNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-#xec_coin   = {cn: "XEC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-okb_coin   = {cn: "OKB-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-nexo_coin  = {cn: "NEXO-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-neo_coin   = {cn: "NEO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-stx_coin   = {cn: "STX-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-waves_coin = {cn: "WAVES-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-chz_coin   = {cn: "CHZ-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-cvx_coin   = {cn: "CVX-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-celo_coin  = {cn: "CELO-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-gala_coin  = {cn: "GALA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-dash_coin  = {cn: "DASH-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-zil_coin   = {cn: "ZIL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-crv_coin   = {cn: "CRV-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-enj_coin   = {cn: "ENJ-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-lrc_coin   = {cn: "LRC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-ksm_coin   = {cn: "KSM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-bat_coin   = {cn: "BAT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-xdc_coin   = {cn: "XDC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-one_coin   = {cn: "ONE-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-paxg_coin  = {cn: "PAXG-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-gno_coin   = {cn: "GNO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-amp_coin   = {cn: "AMP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-kda_coin   = {cn: "KDA-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-mina_coin  = {cn: "MINA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-ar_coin    = {cn: "AR-USD",     start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-comp_coin  = {cn: "COMP1-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-xem_coin   = {cn: "XEM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-dcr_coin   = {cn: "DCR-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-hot_coin   = {cn: "HOT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-ldo_coin   = {cn: "LDO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-kava_coin  = {cn: "KAVA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-gt_coin    = {cn: "GT-USD",     start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-qtum_coin  = {cn: "QTUM-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-fei_coin   = {cn: "FEI-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-bnt_coin   = {cn: "BNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-oinch_coin = {cn: "1INCH-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-xym_coin   = {cn: "XYM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-fet_coin   = {cn: "FET-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
-ankr_coin  = {cn: "ANKR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False}
-shib_coin  = {cn: "SHIB-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
-ctsi_coin  = {cn: "CTSI-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True}
+btc_coin   = {cn: "BTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+eth_coin   = {cn: "ETH-USD",    start_date: '2022-08-09', end_date: '2022-09-26', is_not_divisible: False, has_file: True,  file_path: "ethusd"}
+bnb_coin   = {cn: "BNB-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+xrp_coin   = {cn: "XRP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+ada_coin   = {cn: "ADA-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+sol_coin   = {cn: "SOL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+doge_coin  = {cn: "DOGE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+dot_coin   = {cn: "DOT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+trx_coin   = {cn: "TRX-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+matic_coin = {cn: "MATIC-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+lite_coin  = {cn: "LTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+cro_coin   = {cn: "CRO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+leo_coin   = {cn: "LEO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+near_coin  = {cn: "NEAR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: False, file_path: "none"}
+ftt_coin   = {cn: "FTT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+uni_coin   = {cn: "UNI1-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+link_coin  = {cn: "LINK-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+xlm_coin   = {cn: "XLM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+atom_coin  = {cn: "ATOM-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+algo_coin  = {cn: "ALGO-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+flow_coin  = {cn: "FLOW-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+xmr_coin   = {cn: "XMR-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+ape_coin   = {cn: "APE-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+mana_coin  = {cn: "MANA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: False, file_path: "none"}
+hbar_coin  = {cn: "HBAR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+vet_coin   = {cn: "VET-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+icp_coin   = {cn: "ICP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+egld_coin  = {cn: "EGLD-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+fil_coin   = {cn: "FIL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+xtz_coin   = {cn: "XTZ-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+sand_coin  = {cn: "SAND-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+mkr_coin   = {cn: "MKR-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+zec_coin   = {cn: "ZEC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+theta_coin = {cn: "THETA-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+grp_coin   = {cn: "GRT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+eos_coin   = {cn: "EOS-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+kcs_coin   = {cn: "KCS-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+axs_coin   = {cn: "AXS-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+cake_coin  = {cn: "CAKE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+aave_coin  = {cn: "AAVE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+hnt_coin   = {cn: "HNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+rune_coin  = {cn: "RUNE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+klay_coin  = {cn: "KLAY-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+ht_coin    = {cn: "HT-USD",     start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+btt_coin   = {cn: "BTT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+miota_coin = {cn: "MIOTA-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+ftm_coin   = {cn: "FTM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: False, file_path: "none"}
+gmt_coin   = {cn: "GMT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+qnt_coin   = {cn: "QNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+#xec_coin   = {cn: "XEC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none}
+okb_coin   = {cn: "OKB-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+nexo_coin  = {cn: "NEXO-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+neo_coin   = {cn: "NEO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+stx_coin   = {cn: "STX-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+waves_coin = {cn: "WAVES-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+chz_coin   = {cn: "CHZ-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+cvx_coin   = {cn: "CVX-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+celo_coin  = {cn: "CELO-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+gala_coin  = {cn: "GALA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+dash_coin  = {cn: "DASH-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+zil_coin   = {cn: "ZIL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+crv_coin   = {cn: "CRV-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+enj_coin   = {cn: "ENJ-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+lrc_coin   = {cn: "LRC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+ksm_coin   = {cn: "KSM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+bat_coin   = {cn: "BAT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+xdc_coin   = {cn: "XDC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+one_coin   = {cn: "ONE-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+paxg_coin  = {cn: "PAXG-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+gno_coin   = {cn: "GNO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+amp_coin   = {cn: "AMP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+kda_coin   = {cn: "KDA-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+mina_coin  = {cn: "MINA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+ar_coin    = {cn: "AR-USD",     start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+comp_coin  = {cn: "COMP1-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+xem_coin   = {cn: "XEM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+dcr_coin   = {cn: "DCR-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+hot_coin   = {cn: "HOT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+ldo_coin   = {cn: "LDO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+kava_coin  = {cn: "KAVA-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+gt_coin    = {cn: "GT-USD",     start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+qtum_coin  = {cn: "QTUM-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+fei_coin   = {cn: "FEI-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+bnt_coin   = {cn: "BNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+oinch_coin = {cn: "1INCH-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+xym_coin   = {cn: "XYM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+fet_coin   = {cn: "FET-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: False, file_path: "none"}
+ankr_coin  = {cn: "ANKR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
+shib_coin  = {cn: "SHIB-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: False, file_path: "none"}
+ctsi_coin  = {cn: "CTSI-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: False, file_path: "none"}
 
 
 oni_aggressive   = {bn: "Oni Agrressive",       bo: 50.00, so: 50.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 10,  risk: 100, dec_p: 4}
@@ -255,29 +257,25 @@ def get_data_from_api(coin):
 
     if override_end_date != "":
         ed = override_end_date
-    if False:
+    if not coin[has_file]:
+        print("NO FILE")
         return yf.download(coin[cn], start=sd, end=ed)
 
+    pathfile = '../Historical_Data/test_coins/' + coin[file_path] + '.csv'
+    print("Coin Path: ", pathfile)
 
-    #pathfile = '../Historical Data/Eth/ethusd.csv'
-    pathfile = '../Historical Data/Formatted Data/eth/ethusd-f-completed.csv'
-    #data = pd.read_csv(pathfile, parse_dates=True,)
-    #data['time'] = pd.to_datetime(data['time'], unit='ms')
-    #data.dtypes
-    #print(arr)
-    #data['time'] = data['time'].dt.strftime('%d-%m-%Y %H:%M')
+    # Wednesday, 9 March 2016 16:04:00
+    # Sunday, 18 September 2016 19:37:00
 
-    #print(data)
-    #print(df.keys())
-
-
-    #-------
 
     data = (bt.feeds.GenericCSVData(
         dataname=pathfile,
+        headers=True,
         dtformat=lambda x: datetime.datetime.utcfromtimestamp(float(x) / 1000.0),
         timeframe=bt.TimeFrame.Minutes,
         compression=1,
+        fromdate=datetime.datetime(2022, 1, 1),
+        todate=datetime.datetime(2022, 12, 31),
         nullvalue=0.0,
         datetime=0,
         open=1,
