@@ -661,7 +661,9 @@ class DCAStrat(bt.Strategy):
         print("Number of times Bot reached extra mstc: {}".format(self.bot_extra_mstc_reached_times))
         print("Bot Risk: {}%".format(self.config_risk_value * 100))
         print("Total Bot Cost: {:.2f}".format(self.total_bot_cost))
-        print("Total Profit if bot money invested in trade: {:.2f}".format(self.bot_money_invested_in_trade_profit))
+        print("Total Profit if bot money invested in trade: {:.2f}".format(self.bot_money_invested_in_trade_profit - self.total_bot_cost))
+        trade_roi = ( (self.bot_money_invested_in_trade_profit - self.total_bot_cost) / self.total_bot_cost ) * 100
+        print("Total ROI if bot money invested in trade: {:.2f}%".format(trade_roi))
         print("")
 
     def staticMethodTest(self, profit):
