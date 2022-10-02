@@ -1,4 +1,6 @@
 import datetime
+import time
+
 import matplotlib.pyplot as plt
 
 
@@ -35,16 +37,17 @@ override_end_date = ''#'2022-05-01'
 test_bots = []
 test_coins = []
 
-take_profits = [0.8, 1, 1.25, 2, 3, 4, 5, 10, 15, 20, 30, 50, 100]
+take_profits = [0.25, 0.8, 1, 1.25, 2, 3, 4, 5, 10, 15, 20]#, 30, 50, 100]
 
-btc_coin   = {cn: "BTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
-eth_coin   = {cn: "ETH-USD",    start_date: '2022-08-09', end_date: '2022-09-26', is_not_divisible: False, has_file: True,  file_path: "ethusd"}
+btc_coin   = {cn: "BTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "btcusd-f"}
+eth_coin   = {cn: "ETH-USD",    start_date: '2022-08-09', end_date: '2022-09-26', is_not_divisible: False, has_file: True,  file_path: "ethusd-f"}
+ada_coin   = {cn: "ADA-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "adausd-f"}
+ftm_coin   = {cn: "FTM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: True,  file_path: "ftmusd-f"}
+xrp_coin   = {cn: "XRP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "xrpusd-f"}
+dot_coin   = {cn: "DOT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "dotusd-f"}
+doge_coin  = {cn: "DOGE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "dogeusd-f"}
+sol_coin   = {cn: "SOL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "none"}
 bnb_coin   = {cn: "BNB-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
-xrp_coin   = {cn: "XRP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
-ada_coin   = {cn: "ADA-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
-sol_coin   = {cn: "SOL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
-doge_coin  = {cn: "DOGE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
-dot_coin   = {cn: "DOT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 trx_coin   = {cn: "TRX-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 matic_coin = {cn: "MATIC-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 lite_coin  = {cn: "LTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
@@ -83,7 +86,6 @@ klay_coin  = {cn: "KLAY-USD",   start_date: '2022-01-01', end_date: '2022-05-01'
 ht_coin    = {cn: "HT-USD",     start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 btt_coin   = {cn: "BTT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 miota_coin = {cn: "MIOTA-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
-ftm_coin   = {cn: "FTM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: False, file_path: "none"}
 gmt_coin   = {cn: "GMT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 qnt_coin   = {cn: "QNT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 #xec_coin   = {cn: "XEC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none}
@@ -129,23 +131,30 @@ shib_coin  = {cn: "SHIB-USD",   start_date: '2022-01-01', end_date: '2022-05-01'
 ctsi_coin  = {cn: "CTSI-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: False, file_path: "none"}
 
 
-oni_aggressive   = {bn: "Oni Agrressive",       bo: 50.00, so: 50.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 10,  risk: 100, dec_p: 4}
-ta_bot           = {bn: "TA standard",         bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30, p_mstc: 30, risk: 100, dec_p: 4}
-mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4, ss: 1.3,   mstc: 10,  p_mstc: 8,  risk: 100, dec_p: 4}
-oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 8,  risk: 100, dec_p: 4}
-phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10, p_mstc: 10, risk: 100, dec_p: 4}
-phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11, p_mstc: 11, risk: 100, dec_p: 4}
+phillipe_dev     = {bn: "phillipe_dev",        bo: 10.00, so: 10.00, sos: 0.9,  os: 1.35, ss: 1.15, mstc: 17,  p_mstc: 17,  risk: 100, dec_p: 4}
+phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11,  p_mstc: 23,  risk: 100, dec_p: 4}
+sixtynineer      = {bn: "69ER",                bo: 11.00, so: 11.00, sos: 1.89, os: 0.85, ss: 1.05, mstc: 18,  p_mstc: 18,  risk: 100, dec_p: 4}
+oni_aggressive   = {bn: "Oni Agrressive",      bo: 50.00, so: 50.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 10,  risk: 100, dec_p: 4}
+phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10,  p_mstc: 10,  risk: 100, dec_p: 4}
+ta_bot           = {bn: "TA standard",         bo: 10.00, so: 20.00, sos: 2,    os: 1.05, ss: 1,    mstc: 30,  p_mstc: 30,  risk: 100, dec_p: 4}
+banshee          = {bn: "banshee",             bo: 28.20, so: 28.20, sos: 1.5,  os: 1.4,  ss: 1.13, mstc: 8,   p_mstc: 8,   risk: 100, dec_p: 4}
+Gorgon           = {bn: "Gorgon",              bo: 25.00, so: 25.00, sos: 1.6,  os: 1.2,  ss: 1.13, mstc: 12,  p_mstc: 12,  risk: 100, dec_p: 4}
+chimera          = {bn: "chimera",             bo: 14.00, so: 14.00, sos: 1.6,  os: 1.2,  ss: 1.11, mstc: 15,  p_mstc: 15,  risk: 100, dec_p: 4}
+aqrabua          = {bn: "aqrabua",             bo: 10.00, so: 10.00, sos: 1.0,  os: 1.4,  ss: 1.26, mstc: 12,  p_mstc: 12,  risk: 100, dec_p: 4}
+mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4,  ss: 1.3,  mstc: 10,  p_mstc: 8,   risk: 100, dec_p: 4}
+oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 8,   risk: 100, dec_p: 4}
 
 
 def set_test_coins():
-    #test_coins.append(btc_coin)
+    test_coins.append(ada_coin)
+    test_coins.append(ftm_coin)
+    test_coins.append(xrp_coin)
+    test_coins.append(dot_coin)
+    test_coins.append(doge_coin)
     test_coins.append(eth_coin)
+    test_coins.append(btc_coin)
     #test_coins.append(bnb_coin)
-    #test_coins.append(xrp_coin)
-    #test_coins.append(ada_coin)
     #test_coins.append(sol_coin)
-    #test_coins.append(doge_coin)
-    #test_coins.append(dot_coin)
     #test_coins.append(trx_coin)
     #test_coins.append(matic_coin)
     #test_coins.append(lite_coin)
@@ -184,7 +193,6 @@ def set_test_coins():
     #test_coins.append(ht_coin)
     #test_coins.append(btt_coin)
     #test_coins.append(miota_coin)
-    #test_coins.append(ftm_coin)
     #test_coins.append(gmt_coin)
     #test_coins.append(qnt_coin)
     ##test_coins.append(xec_coin)
@@ -231,12 +239,17 @@ def set_test_coins():
 
 
 def set_test_bots():
-    test_bots.append(oni_aggressive)
-    test_bots.append(ta_bot)
-    test_bots.append(mars_bot)
-    test_bots.append(oni_bot)
-    test_bots.append(phillipe_bot)
+    test_bots.append(phillipe_dev)
     test_bots.append(phillipe_025_bot)
+    test_bots.append(sixtynineer)
+    test_bots.append(oni_aggressive)
+    test_bots.append(phillipe_bot)
+    test_bots.append(ta_bot)
+    test_bots.append(banshee)
+    test_bots.append(Gorgon)
+    test_bots.append(chimera)
+    test_bots.append(aqrabua)
+    test_bots.append(mars_bot)
 
 
 def run_test_bots(bot_ph):
@@ -263,6 +276,7 @@ def get_data_from_api(coin):
 
     pathfile = '../Historical_Data/test_coins/' + coin[file_path] + '.csv'
     print("Coin Path: ", pathfile)
+    print("")
 
     # Wednesday, 9 March 2016 16:04:00
     # Sunday, 18 September 2016 19:37:00
@@ -330,6 +344,7 @@ def run_dca_bot(config, coin=None, start_date=None, end_date=None, dfData=None, 
     # cerebro.plot(style='candlestick', height=3000, width=3000, dpi=10000)
 
 if __name__ == "__main__":
+    print("Starting application....", time.ctime(time.time()))
     bot_profit_history = BotProfitHistory()
     set_test_coins()
     set_test_bots()
