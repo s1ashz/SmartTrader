@@ -24,3 +24,4 @@ after_output.log
 *load-tests-result.txt
 test*.out
 backtest_result*
+*.logs
