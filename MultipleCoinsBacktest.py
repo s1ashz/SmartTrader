@@ -46,14 +46,15 @@ ftm_coin   = {cn: "FTM-USD",    start_date: '2022-01-01', end_date: '2022-05-01'
 xrp_coin   = {cn: "XRP-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "xrpusd-f"}
 dot_coin   = {cn: "DOT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "dotusd-f"}
 doge_coin  = {cn: "DOGE-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "dogeusd-f"}
-sol_coin   = {cn: "SOL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "none"}
+sol_coin   = {cn: "SOL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "solusd-f"}
+near_coin  = {cn: "NEAR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: True,  file_path: "nearusd-f"}
+enj_coin   = {cn: "ENJ-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: True,  file_path: "enjusd-f"}
 bnb_coin   = {cn: "BNB-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 trx_coin   = {cn: "TRX-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 matic_coin = {cn: "MATIC-USD",  start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 lite_coin  = {cn: "LTC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 cro_coin   = {cn: "CRO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 leo_coin   = {cn: "LEO-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
-near_coin  = {cn: "NEAR-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: True,  has_file: False, file_path: "none"}
 ftt_coin   = {cn: "FTT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 uni_coin   = {cn: "UNI1-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 link_coin  = {cn: "LINK-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
@@ -101,7 +102,6 @@ gala_coin  = {cn: "GALA-USD",   start_date: '2022-01-01', end_date: '2022-05-01'
 dash_coin  = {cn: "DASH-USD",   start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 zil_coin   = {cn: "ZIL-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 crv_coin   = {cn: "CRV-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
-enj_coin   = {cn: "ENJ-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 lrc_coin   = {cn: "LRC-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 ksm_coin   = {cn: "KSM-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
 bat_coin   = {cn: "BAT-USD",    start_date: '2022-01-01', end_date: '2022-05-01', is_not_divisible: False, has_file: False, file_path: "none"}
@@ -132,7 +132,7 @@ ctsi_coin  = {cn: "CTSI-USD",   start_date: '2022-01-01', end_date: '2022-05-01'
 
 
 phillipe_dev     = {bn: "phillipe_dev",        bo: 10.00, so: 10.00, sos: 0.9,  os: 1.35, ss: 1.15, mstc: 17,  p_mstc: 17,  risk: 100, dec_p: 4}
-phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11,  p_mstc: 23,  risk: 100, dec_p: 4}
+phillipe_025_bot = {bn: "Phillipe 0.25",       bo: 10.00, so: 20.00, sos: 0.98, os: 1.48, ss: 1.11, mstc: 11,  p_mstc: 11,  risk: 100, dec_p: 4}
 sixtynineer      = {bn: "69ER",                bo: 11.00, so: 11.00, sos: 1.89, os: 0.85, ss: 1.05, mstc: 18,  p_mstc: 18,  risk: 100, dec_p: 4}
 oni_aggressive   = {bn: "Oni Agrressive",      bo: 50.00, so: 50.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 10,  risk: 100, dec_p: 4}
 phillipe_bot     = {bn: "Phillipe",            bo: 10.00, so: 18.00, sos: 1.42, os: 1.56, ss: 1.23, mstc: 10,  p_mstc: 10,  risk: 100, dec_p: 4}
@@ -141,26 +141,27 @@ banshee          = {bn: "banshee",             bo: 28.20, so: 28.20, sos: 1.5,  
 Gorgon           = {bn: "Gorgon",              bo: 25.00, so: 25.00, sos: 1.6,  os: 1.2,  ss: 1.13, mstc: 12,  p_mstc: 12,  risk: 100, dec_p: 4}
 chimera          = {bn: "chimera",             bo: 14.00, so: 14.00, sos: 1.6,  os: 1.2,  ss: 1.11, mstc: 15,  p_mstc: 15,  risk: 100, dec_p: 4}
 aqrabua          = {bn: "aqrabua",             bo: 10.00, so: 10.00, sos: 1.0,  os: 1.4,  ss: 1.26, mstc: 12,  p_mstc: 12,  risk: 100, dec_p: 4}
-mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4,  ss: 1.3,  mstc: 10,  p_mstc: 8,   risk: 100, dec_p: 4}
-oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 8,   risk: 100, dec_p: 4}
+mars_bot         = {bn: "Mars",                bo: 10.00, so: 10.00, sos: 1.8,  os: 1.4,  ss: 1.3,  mstc: 10,  p_mstc: 10,   risk: 100, dec_p: 4}
+oni_bot          = {bn: "Oni",                 bo: 10.00, so: 10.00, sos: 1,    os: 1.4,  ss: 1.45, mstc: 10,  p_mstc: 10,   risk: 100, dec_p: 4}
 
 
 def set_test_coins():
     test_coins.append(ada_coin)
     test_coins.append(ftm_coin)
     test_coins.append(xrp_coin)
+    test_coins.append(near_coin)
+    test_coins.append(sol_coin)
     test_coins.append(dot_coin)
     test_coins.append(doge_coin)
+    test_coins.append(enj_coin)
     test_coins.append(eth_coin)
     test_coins.append(btc_coin)
     #test_coins.append(bnb_coin)
-    #test_coins.append(sol_coin)
     #test_coins.append(trx_coin)
     #test_coins.append(matic_coin)
     #test_coins.append(lite_coin)
     #test_coins.append(cro_coin)
     #test_coins.append(leo_coin)
-    #test_coins.append(near_coin)
     #test_coins.append(ftt_coin)
     #test_coins.append(uni_coin)
     #test_coins.append(link_coin)
@@ -208,7 +209,6 @@ def set_test_coins():
     #test_coins.append(dash_coin)
     #test_coins.append(zil_coin)
     #test_coins.append(crv_coin)
-    #test_coins.append(enj_coin)
     #test_coins.append(lrc_coin)
     #test_coins.append(ksm_coin)
     #test_coins.append(bat_coin)
