@@ -1,5 +1,6 @@
 import datetime
 import time
+import os.path as path
 
 import matplotlib.pyplot as plt
 
@@ -30,6 +31,9 @@ start_date = "start_date"
 end_date = "end_date"
 has_file = False
 file_path = "none"
+path_to_test_coins_file = "../Historical_Data/test_coins/"
+test_coins_file_extension = ".csv"
+
 
 override_start_date = ''#'2022-01-01'
 override_end_date = ''#'2022-05-01'
@@ -343,10 +347,17 @@ def run_dca_bot(config, coin=None, start_date=None, end_date=None, dfData=None, 
     # plt.rcParams['figure.figsize'] = [10, 8]
     # cerebro.plot(style='candlestick', height=3000, width=3000, dpi=10000)
 
+def check_if_files_exist():
+    for coin in test_coins:
+        if coin[has_file]:
+            if not path.exists(path_to_test_coins_file + coin[file_path] + test_coins_file_extension):
+                raise Exception("Sorry, path of coin does not exist: ", path_to_test_coins_file + coin[file_path] + test_coins_file_extension)
+
 if __name__ == "__main__":
     print("Starting application....", time.ctime(time.time()))
     bot_profit_history = BotProfitHistory()
     set_test_coins()
     set_test_bots()
+    check_if_files_exist()
     run_test_bots(bot_profit_history)
     bot_profit_history.print_profits()
