@@ -1,0 +1,1114 @@
+/usr/local/bin/python3.9 /Users/franciscofilipe/work/Practice/python/backtester/SmartTrader/MultipleCoinsBacktest.py
+getting data for coin... ETH-USD
+Coin Path:  ../Historical_Data/test_coins/ethusd.csv
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.008
+Total Bot Profit: 144.93 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 4.09%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.01
+Total Bot Profit: 148.18 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 4.19%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.0125
+Total Bot Profit: 176.30 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 4.98%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.02
+Total Bot Profit: 181.53 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 5.13%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.03
+Total Bot Profit: 190.96 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 5.39%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.04
+Total Bot Profit: 214.26 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 6.05%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.05
+Total Bot Profit: 245.42 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 6.93%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.1
+Total Bot Profit: 419.86 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 11.86%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.15
+Total Bot Profit: 395.39 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 11.17%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.2
+Total Bot Profit: 602.48 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 17.02%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.3
+Total Bot Profit: 530.92 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 14.99%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 1.5
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni Agrressive
+Bot TP: 2.0
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3540.68
+Total Profit if bot money invested in trade: 1269.89
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.008
+Total Bot Profit: 50.77 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 3.79%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.01
+Total Bot Profit: 99.08 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 7.40%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.0125
+Total Bot Profit: 59.30 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 4.43%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.02
+Total Bot Profit: 74.43 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 5.56%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.03
+Total Bot Profit: 83.41 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 6.23%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.04
+Total Bot Profit: 76.87 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 5.74%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.05
+Total Bot Profit: 94.56 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 7.06%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.1
+Total Bot Profit: 141.48 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 10.57%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.15
+Total Bot Profit: 156.84 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 11.71%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.2
+Total Bot Profit: 134.26 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 10.03%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.3
+Total Bot Profit: 201.40 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 15.04%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 1.5
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: TA standard
+Bot TP: 2.0
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 1338.78
+Total Profit if bot money invested in trade: 480.16
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.008
+Total Bot Profit: 29.01 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 8.20%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.01
+Total Bot Profit: 31.01 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 8.76%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.0125
+Total Bot Profit: 28.85 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 8.15%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.02
+Total Bot Profit: 33.61 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 9.50%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.03
+Total Bot Profit: 34.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 9.61%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.04
+Total Bot Profit: 43.31 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 12.24%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.05
+Total Bot Profit: 47.46 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 13.41%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.1
+Total Bot Profit: 58.12 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 16.42%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.15
+Total Bot Profit: 37.28 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 10.53%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.2
+Total Bot Profit: 49.71 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 14.04%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.3
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 1.5
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Mars
+Bot TP: 2.0
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.008
+Total Bot Profit: 28.99 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 8.19%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.01
+Total Bot Profit: 29.64 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 8.37%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.0125
+Total Bot Profit: 35.26 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 9.96%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.02
+Total Bot Profit: 36.31 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 10.26%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.03
+Total Bot Profit: 38.19 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 10.79%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.04
+Total Bot Profit: 42.85 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 12.11%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.05
+Total Bot Profit: 49.08 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 13.87%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.1
+Total Bot Profit: 83.97 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 23.72%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.15
+Total Bot Profit: 79.08 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 22.34%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.2
+Total Bot Profit: 120.50 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 34.04%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.3
+Total Bot Profit: 106.18 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 30.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 1.5
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Oni
+Bot TP: 2.0
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 353.95
+Total Profit if bot money invested in trade: 126.95
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.008
+Total Bot Profit: 147.26 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 5.41%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.01
+Total Bot Profit: 100.46 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 3.69%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.0125
+Total Bot Profit: 201.79 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 7.41%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.02
+Total Bot Profit: 149.96 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 5.51%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.03
+Total Bot Profit: 184.18 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 6.77%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.04
+Total Bot Profit: 197.22 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 7.25%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.05
+Total Bot Profit: 263.45 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 9.68%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 1
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.1
+Total Bot Profit: 313.06 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 11.50%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.15
+Total Bot Profit: 500.86 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 18.40%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.2
+Total Bot Profit: 347.32 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 12.76%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.3
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 1.5
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe
+Bot TP: 2.0
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 2721.52
+Total Profit if bot money invested in trade: 976.09
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.008
+Total Bot Profit: 239.30 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 7.78%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.01
+Total Bot Profit: 270.55 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 8.79%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.0125
+Total Bot Profit: 325.56 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 10.58%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.02
+Total Bot Profit: 461.91 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 15.01%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.03
+Total Bot Profit: 469.92 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 15.27%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.04
+Total Bot Profit: 756.35 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 24.58%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.05
+Total Bot Profit: 167.59 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 5.45%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.1
+Total Bot Profit: 307.77 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 10.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.15
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.2
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.3
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 1.5
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+Date: 2022-01-01 - 2022-09-23
+Bot: Phillipe 0.25
+Bot TP: 2.0
+Total Bot Profit: 0.00 $
+Daily Bot ROI: 0.00%
+Total Bot ROI: 0.00%
+Total Bars: 379280
+Number of times Bot volume surpassed risk volume: 0
+Number of times Bot reached extra mstc: 0
+Bot Risk: 100.0%
+Total Bot Cost: 3077.67
+Total Profit if bot money invested in trade: 1103.82
+
+ETH-USD
+               Bot,      Coin,    TP%,     Profit,    Daily ROI,       ROI,    Bot Cost,     Risk,   Nº>risk,   Nº>mstc,  bot_numb,    Profit If Invested
+
+'============ ETH-USD ============
+
+    Oni Agrressive,   ETH-USD,  0.80%,   144.93 $,       0.00 %,    4.09 %,     3540.68,    100 %,         0,         0,       159,               1269.89
+       TA standard,   ETH-USD,  0.80%,    50.77 $,       0.00 %,    3.79 %,     1338.78,    100 %,         0,         0,       261,                480.16
+              Mars,   ETH-USD,  0.80%,    29.01 $,       0.00 %,    8.20 %,      353.95,    100 %,         0,         0,       196,                126.95
+               Oni,   ETH-USD,  0.80%,    28.99 $,       0.00 %,    8.19 %,      353.95,    100 %,         1,         0,       159,                126.95
+          Phillipe,   ETH-USD,  0.80%,   147.26 $,       0.00 %,    5.41 %,     2721.52,    100 %,         1,         0,       425,                976.09
+     Phillipe 0.25,   ETH-USD,  0.80%,   239.30 $,       0.00 %,    7.78 %,     3077.67,    100 %,         0,         0,       405,               1103.82
+
+    Oni Agrressive,   ETH-USD,  1.00%,   148.18 $,       0.00 %,    4.19 %,     3540.68,    100 %,         0,         0,       116,               1269.89
+       TA standard,   ETH-USD,  1.00%,    99.08 $,       0.00 %,    7.40 %,     1338.78,    100 %,         0,         0,       299,                480.16
+              Mars,   ETH-USD,  1.00%,    31.01 $,       0.00 %,    8.76 %,      353.95,    100 %,         0,         0,       150,                126.95
+               Oni,   ETH-USD,  1.00%,    29.64 $,       0.00 %,    8.37 %,      353.95,    100 %,         1,         0,       116,                126.95
+          Phillipe,   ETH-USD,  1.00%,   100.46 $,       0.00 %,    3.69 %,     2721.52,    100 %,         0,         0,       236,                976.09
+     Phillipe 0.25,   ETH-USD,  1.00%,   270.55 $,       0.00 %,    8.79 %,     3077.67,    100 %,         0,         0,       264,               1103.82
+
+    Oni Agrressive,   ETH-USD,  1.25%,   176.30 $,       0.00 %,    4.98 %,     3540.68,    100 %,         0,         0,        96,               1269.89
+       TA standard,   ETH-USD,  1.25%,    59.30 $,       0.00 %,    4.43 %,     1338.78,    100 %,         0,         0,       145,                480.16
+              Mars,   ETH-USD,  1.25%,    28.85 $,       0.00 %,    8.15 %,      353.95,    100 %,         0,         0,        99,                126.95
+               Oni,   ETH-USD,  1.25%,    35.26 $,       0.00 %,    9.96 %,      353.95,    100 %,         1,         0,        96,                126.95
+          Phillipe,   ETH-USD,  1.25%,   201.79 $,       0.00 %,    7.41 %,     2721.52,    100 %,         1,         0,       248,                976.09
+     Phillipe 0.25,   ETH-USD,  1.25%,   325.56 $,       0.00 %,   10.58 %,     3077.67,    100 %,         0,         0,       198,               1103.82
+
+    Oni Agrressive,   ETH-USD,  2.00%,   181.53 $,       0.00 %,    5.13 %,     3540.68,    100 %,         0,         0,        46,               1269.89
+       TA standard,   ETH-USD,  2.00%,    74.43 $,       0.00 %,    5.56 %,     1338.78,    100 %,         0,         0,        79,                480.16
+              Mars,   ETH-USD,  2.00%,    33.61 $,       0.00 %,    9.50 %,      353.95,    100 %,         0,         0,        54,                126.95
+               Oni,   ETH-USD,  2.00%,    36.31 $,       0.00 %,   10.26 %,      353.95,    100 %,         1,         0,        46,                126.95
+          Phillipe,   ETH-USD,  2.00%,   149.96 $,       0.00 %,    5.51 %,     2721.52,    100 %,         0,         0,        91,                976.09
+     Phillipe 0.25,   ETH-USD,  2.00%,   461.91 $,       0.00 %,   15.01 %,     3077.67,    100 %,         0,         0,        98,               1103.82
+
+    Oni Agrressive,   ETH-USD,  3.00%,   190.96 $,       0.00 %,    5.39 %,     3540.68,    100 %,         0,         0,        25,               1269.89
+       TA standard,   ETH-USD,  3.00%,    83.41 $,       0.00 %,    6.23 %,     1338.78,    100 %,         0,         0,        41,                480.16
+              Mars,   ETH-USD,  3.00%,    34.00 $,       0.00 %,    9.61 %,      353.95,    100 %,         1,         0,        28,                126.95
+               Oni,   ETH-USD,  3.00%,    38.19 $,       0.00 %,   10.79 %,      353.95,    100 %,         1,         0,        25,                126.95
+          Phillipe,   ETH-USD,  3.00%,   184.18 $,       0.00 %,    6.77 %,     2721.52,    100 %,         1,         0,        43,                976.09
+     Phillipe 0.25,   ETH-USD,  3.00%,   469.92 $,       0.00 %,   15.27 %,     3077.67,    100 %,         0,         0,        43,               1103.82
+
+    Oni Agrressive,   ETH-USD,  4.00%,   214.26 $,       0.00 %,    6.05 %,     3540.68,    100 %,         0,         0,        17,               1269.89
+       TA standard,   ETH-USD,  4.00%,    76.87 $,       0.00 %,    5.74 %,     1338.78,    100 %,         0,         0,        21,                480.16
+              Mars,   ETH-USD,  4.00%,    43.31 $,       0.00 %,   12.24 %,      353.95,    100 %,         0,         0,        21,                126.95
+               Oni,   ETH-USD,  4.00%,    42.85 $,       0.00 %,   12.11 %,      353.95,    100 %,         1,         0,        17,                126.95
+          Phillipe,   ETH-USD,  4.00%,   197.22 $,       0.00 %,    7.25 %,     2721.52,    100 %,         0,         0,        28,                976.09
+     Phillipe 0.25,   ETH-USD,  4.00%,   756.35 $,       0.00 %,   24.58 %,     3077.67,    100 %,         0,         0,        30,               1103.82
+
+    Oni Agrressive,   ETH-USD,  5.00%,   245.42 $,       0.00 %,    6.93 %,     3540.68,    100 %,         0,         0,        13,               1269.89
+       TA standard,   ETH-USD,  5.00%,    94.56 $,       0.00 %,    7.06 %,     1338.78,    100 %,         0,         0,        17,                480.16
+              Mars,   ETH-USD,  5.00%,    47.46 $,       0.00 %,   13.41 %,      353.95,    100 %,         1,         0,        16,                126.95
+               Oni,   ETH-USD,  5.00%,    49.08 $,       0.00 %,   13.87 %,      353.95,    100 %,         1,         0,        13,                126.95
+          Phillipe,   ETH-USD,  5.00%,   263.45 $,       0.00 %,    9.68 %,     2721.52,    100 %,         1,         0,        21,                976.09
+     Phillipe 0.25,   ETH-USD,  5.00%,   167.59 $,       0.00 %,    5.45 %,     3077.67,    100 %,         0,         0,         4,               1103.82
+
+    Oni Agrressive,   ETH-USD, 10.00%,   419.86 $,       0.00 %,   11.86 %,     3540.68,    100 %,         0,         0,         7,               1269.89
+       TA standard,   ETH-USD, 10.00%,   141.48 $,       0.00 %,   10.57 %,     1338.78,    100 %,         0,         0,         7,                480.16
+              Mars,   ETH-USD, 10.00%,    58.12 $,       0.00 %,   16.42 %,      353.95,    100 %,         0,         0,         6,                126.95
+               Oni,   ETH-USD, 10.00%,    83.97 $,       0.00 %,   23.72 %,      353.95,    100 %,         1,         0,         7,                126.95
+          Phillipe,   ETH-USD, 10.00%,   313.06 $,       0.00 %,   11.50 %,     2721.52,    100 %,         0,         0,         7,                976.09
+     Phillipe 0.25,   ETH-USD, 10.00%,   307.77 $,       0.00 %,   10.00 %,     3077.67,    100 %,         0,         0,         2,               1103.82
+
+    Oni Agrressive,   ETH-USD, 15.00%,   395.39 $,       0.00 %,   11.17 %,     3540.68,    100 %,         0,         0,         3,               1269.89
+       TA standard,   ETH-USD, 15.00%,   156.84 $,       0.00 %,   11.71 %,     1338.78,    100 %,         0,         0,         4,                480.16
+              Mars,   ETH-USD, 15.00%,    37.28 $,       0.00 %,   10.53 %,      353.95,    100 %,         0,         0,         2,                126.95
+               Oni,   ETH-USD, 15.00%,    79.08 $,       0.00 %,   22.34 %,      353.95,    100 %,         1,         0,         3,                126.95
+          Phillipe,   ETH-USD, 15.00%,   500.86 $,       0.00 %,   18.40 %,     2721.52,    100 %,         0,         0,         5,                976.09
+     Phillipe 0.25,   ETH-USD, 15.00%,     0.00 $,       0.00 %,    0.00 %,     3077.67,    100 %,         0,         0,         1,               1103.82
+
+    Oni Agrressive,   ETH-USD, 20.00%,   602.48 $,       0.00 %,   17.02 %,     3540.68,    100 %,         0,         0,         3,               1269.89
+       TA standard,   ETH-USD, 20.00%,   134.26 $,       0.00 %,   10.03 %,     1338.78,    100 %,         0,         0,         2,                480.16
+              Mars,   ETH-USD, 20.00%,    49.71 $,       0.00 %,   14.04 %,      353.95,    100 %,         0,         0,         2,                126.95
+               Oni,   ETH-USD, 20.00%,   120.50 $,       0.00 %,   34.04 %,      353.95,    100 %,         1,         0,         3,                126.95
+          Phillipe,   ETH-USD, 20.00%,   347.32 $,       0.00 %,   12.76 %,     2721.52,    100 %,         0,         0,         2,                976.09
+     Phillipe 0.25,   ETH-USD, 20.00%,     0.00 $,       0.00 %,    0.00 %,     3077.67,    100 %,         0,         0,         1,               1103.82
+
+    Oni Agrressive,   ETH-USD, 30.00%,   530.92 $,       0.00 %,   14.99 %,     3540.68,    100 %,         0,         0,         2,               1269.89
+       TA standard,   ETH-USD, 30.00%,   201.40 $,       0.00 %,   15.04 %,     1338.78,    100 %,         0,         0,         2,                480.16
+              Mars,   ETH-USD, 30.00%,     0.00 $,       0.00 %,    0.00 %,      353.95,    100 %,         0,         0,         1,                126.95
+               Oni,   ETH-USD, 30.00%,   106.18 $,       0.00 %,   30.00 %,      353.95,    100 %,         1,         0,         2,                126.95
+          Phillipe,   ETH-USD, 30.00%,     0.00 $,       0.00 %,    0.00 %,     2721.52,    100 %,         0,         0,         1,                976.09
+     Phillipe 0.25,   ETH-USD, 30.00%,     0.00 $,       0.00 %,    0.00 %,     3077.67,    100 %,         0,         0,         1,               1103.82
+
+    Oni Agrressive,   ETH-USD, 50.00%,     0.00 $,       0.00 %,    0.00 %,     3540.68,    100 %,         0,         0,         1,               1269.89
+       TA standard,   ETH-USD, 50.00%,     0.00 $,       0.00 %,    0.00 %,     1338.78,    100 %,         0,         0,         1,                480.16
+              Mars,   ETH-USD, 50.00%,     0.00 $,       0.00 %,    0.00 %,      353.95,    100 %,         0,         0,         1,                126.95
+               Oni,   ETH-USD, 50.00%,     0.00 $,       0.00 %,    0.00 %,      353.95,    100 %,         0,         0,         1,                126.95
+          Phillipe,   ETH-USD, 50.00%,     0.00 $,       0.00 %,    0.00 %,     2721.52,    100 %,         0,         0,         1,                976.09
+     Phillipe 0.25,   ETH-USD, 50.00%,     0.00 $,       0.00 %,    0.00 %,     3077.67,    100 %,         0,         0,         1,               1103.82
+
+    Oni Agrressive,   ETH-USD,100.00%,     0.00 $,       0.00 %,    0.00 %,     3540.68,    100 %,         0,         0,         1,               1269.89
+       TA standard,   ETH-USD,100.00%,     0.00 $,       0.00 %,    0.00 %,     1338.78,    100 %,         0,         0,         1,                480.16
+              Mars,   ETH-USD,100.00%,     0.00 $,       0.00 %,    0.00 %,      353.95,    100 %,         0,         0,         1,                126.95
+               Oni,   ETH-USD,100.00%,     0.00 $,       0.00 %,    0.00 %,      353.95,    100 %,         0,         0,         1,                126.95
+          Phillipe,   ETH-USD,100.00%,     0.00 $,       0.00 %,    0.00 %,     2721.52,    100 %,         0,         0,         1,                976.09
+     Phillipe 0.25,   ETH-USD,100.00%,     0.00 $,       0.00 %,    0.00 %,     3077.67,    100 %,         0,         0,         1,               1103.82
+
+Process finished with exit code 0
