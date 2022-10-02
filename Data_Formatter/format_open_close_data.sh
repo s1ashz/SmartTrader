@@ -4,7 +4,8 @@ echo "Current date: $(date)"
 
 csv_file=$1
 csv_file_dir="${csv_file%/*}"
-csv_file_name="${csv_file##*/}"
+file_name_it="${csv_file##*/}"
+csv_file_name="${file_name_it%.*}"
 csv_file_extension=${csv_file##*.}
 csv_formatted_file="$csv_file_dir/formatted/$csv_file_name-f.$csv_file_extension"
 
